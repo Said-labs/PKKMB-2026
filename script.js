@@ -1,27 +1,8 @@
-/* =========================================================
-   TELUTIZEN STARTER BOOK — SCRIPT
-   Dibagi per-bagian, cari komentar besar "===== NAMA BAGIAN ====="
-   untuk lompat ke bagian yang mau diedit.
 
-   Catatan: semua konten (teks & foto) sudah statis di index.html,
-   jadi tidak ada lagi logika upload foto atau autosave teks di sini.
-   Yang tersisa cuma interaksi tampilan: sidebar, popup menu, dan
-   kartu SWOT yang bisa dibalik.
-
-   Daftar isi:
-   1. Sidebar (buka/tutup, sama di semua ukuran layar)
-   2. Popup menu (titik tiga)
-   3. Kartu SWOT (flip card)
-========================================================= */
 (function(){
   "use strict";
 
-  /* ===================== 1. SIDEBAR (BUKA/TUTUP) =====================
-     Satu sumber kebenaran: class "is-open" pada #sidebar & "sidebar-open"
-     pada <body>. Perilakunya identik di semua ukuran layar (desktop,
-     tablet, mobile): sidebar digeser masuk dari kiri, dan konten
-     (.book) ikut didorong ke kanan lewat CSS — jadi sidebar TIDAK
-     pernah menutupi/menumpuk halaman. */
+ 
   const sidebar = document.getElementById("sidebar");
   const openBtn = document.getElementById("openSidebar");
   const closeBtn = document.getElementById("closeSidebar");
@@ -43,8 +24,7 @@
   openBtn?.addEventListener("click", toggleSidebar);
   closeBtn?.addEventListener("click", closeSidebar);
 
-  // klik di luar sidebar (misalnya di area konten yang terdorong)
-  // saat sidebar terbuka akan menutupnya kembali.
+  
   document.addEventListener("click", (e)=>{
     const isOpen = sidebar?.classList.contains("is-open");
     if(!isOpen) return;
@@ -56,14 +36,12 @@
     if(e.key === "Escape") closeSidebar();
   });
 
-  // menutup sidebar otomatis saat salah satu menunya diklik
+
   sidebar?.querySelectorAll(".sidebar__item:not(.sidebar__item--menu)").forEach(item=>{
     item.addEventListener("click", closeSidebar);
   });
 
-  // tulisan judul di topbar disembunyikan begitu halaman discroll,
-  // dan muncul lagi saat kembali ke paling atas. Berlaku sama di
-  // semua ukuran layar.
+
   const topbar = document.getElementById("topbar");
   function updateTopbarOnScroll(){
     if(!topbar) return;
@@ -72,7 +50,7 @@
   window.addEventListener("scroll", updateTopbarOnScroll, { passive:true });
   updateTopbarOnScroll();
 
-  /* ===================== 2. POPUP MENU (TITIK TIGA) ===================== */
+  /* ===================== 2. POPUP MENU ===================== */
   const menuPopup = document.getElementById("menuPopup");
   document.getElementById("menuToggle")?.addEventListener("click", (e)=>{
     e.stopPropagation();
@@ -84,7 +62,7 @@
     }
   });
 
-  /* ===================== 3. KARTU SWOT (FLIP) ===================== */
+  /* ===================== 3. KARTU SWOT  ===================== */
   document.querySelectorAll(".flipcard").forEach(card=>{
     card.addEventListener("click", ()=> card.classList.toggle("flipped"));
   });
