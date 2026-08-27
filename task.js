@@ -1,13 +1,11 @@
-/* =====================================================================
-   1) KONFIGURASI — EDIT BAGIAN INI SESUAI KEGIATANMU
-   ===================================================================== */
+
 
 const CONFIG = {
   title: "Task PKKMB",
   subtitle: "Documentation of assignments from the pre-PKKMB phase through the completion of the PKKMB at Telkom University.",
-  // isi manual kalau mau override, biarkan null supaya dihitung otomatis dari data di bawah
+
   stats: {
-    Assigned: 0, // angka bebas, edit sendiri
+    Assigned: 0, // angka bebas
     Submitted: null,
     // null = dihitung otomatis dari field "time" tiap item, format "HH:MM"
   }
@@ -26,7 +24,7 @@ const ITEMS = [
     tags: ["TWIBON", "PKKMB2026", "TELKOM UNIVERSITY", " INFORATIKA"],
      link: "https://www.instagram.com/p/DchAckUk9k4/?utm_source=ig_web_copy_link&igsi=MzRlODBiNWFlZA==",   
   linkLabel: "LINK TWIBON",
-   //ocation: { lat: -6.9147, lng: 107.6098, name: "Bandung, Jawa Barat" },
+   //location: { lat: -6.9147, lng: 107.6098, name: "Bandung, Jawa Barat" },
     audio: null,
   },
 
@@ -66,16 +64,16 @@ const ITEMS = [
     title: "PORTOFOLIO & RESUME",
     description: "Sesi santai sebelum evaluasi akhir minggu, sambil membahas rencana lanjutan.",
     tags: ["PORTOFOLIO", "RESUME", "PEMBELAJARAN"],
-  fileLink: "index.html",  // ⬅️ link ke file lokal (opsional, isi null kalau gaada)
+  fileLink: "index.html",  
   fileLabel: "BUKA PORTOFOLIO & RESUME",
   
     audio: null,
   },
-  // tambahkan objek baru di sini, format sama seperti di atas
+ 
 ];
 
 /* =====================================================================
-   3) GOOGLE DRIVE → EMBED HELPERS
+   3) GOOGLE DRIVE 
    ===================================================================== */
 
 function extractDriveId(link) {
@@ -99,7 +97,7 @@ function drivePreviewUrl(id) {
 }
 
 /* =====================================================================
-   4) UTIL TANGGAL (format hari Indonesia, seperti label Google Photos)
+   4) UTIL TANGGAL 
    ===================================================================== */
 
 const HARI = ["Min", "Sen", "Sel", "Rab", "Kam", "Jum", "Sab"];
@@ -111,7 +109,7 @@ function formatTanggal(iso) {
 }
 
 /* =====================================================================
-   5) BANGUN STRUKTUR HALAMAN (dikelompokkan per tanggal, terbaru dulu)
+   5) BANGUN STRUKTUR HALAMAN 
    ===================================================================== */
 
 function groupByDate(items) {
@@ -127,13 +125,13 @@ function groupByDate(items) {
 
 const PAGES = groupByDate(ITEMS);
 let currentPage = 0;
-let flatIndex = -1; // index media aktif di lightbox, berjalan lintas semua ITEMS terurut sama seperti tampilan
+let flatIndex = -1; 
 
-// urutan flat yang match urutan tampilan (ikuti urutan PAGES)
+
 const FLAT_ITEMS = PAGES.flatMap(p => p.items);
 
 /* =====================================================================
-   6) RENDER HEADER / STATISTIK
+   6) RENDER HEADER 
    ===================================================================== */
 
 function renderStats() {
@@ -381,7 +379,7 @@ document.addEventListener("keydown", e => {
   if (e.key === "ArrowRight") stepLightbox(1);
 });
 
-// pan gambar saat di-zoom (drag)
+
 (function enablePan() {
   let dragging = false, startX = 0, startY = 0, curX = 0, curY = 0;
   lbFrame.addEventListener("pointerdown", e => {
@@ -398,14 +396,12 @@ document.addEventListener("keydown", e => {
   zoomRange.addEventListener("input", () => { curX = 0; curY = 0; });
 })();
 
-/* =====================================================================
-   9) INIT
-   ===================================================================== */
+
 
 renderStats();
 renderPages();
 
-// buka langsung ke item tertentu kalau ada #id di URL saat load
+
 if (location.hash) {
   const id = location.hash.slice(1);
   const pageIdx = PAGES.findIndex(p => p.items.some(i => i.id === id));
