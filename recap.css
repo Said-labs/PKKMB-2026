@@ -338,11 +338,14 @@ body{
 .lb-frame{
   flex:1;
   width:100%;
-  display:flex; align-items:center; justify-content:center;
+  display:block; align-item:center; justify-content:center;
   overflow:hidden;
+    max-height:65vh;
   border-radius: 10px;
   cursor: grab;
   min-height:0;
+   transition: filter .15s;
+aspect-ratio: 16 / 9;
 }
 .lb-frame:active{ cursor:grabbing; }
 .lb-frame img, .lb-frame video, .lb-frame iframe{
