@@ -183,7 +183,7 @@ body{
   overflow:hidden;
 }
 .page::before{
-  /* jahitan spiral buku di sisi kiri */
+
   content:"";
   position:absolute;
   left:0; top:0; bottom:0;
