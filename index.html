@@ -12,19 +12,10 @@
 </head>
 <body>
 
-<!--
-  CATATAN UNTUK DEVELOPER (bukan untuk pengunjung web):
-  Semua isi di halaman ini SUDAH FINAL / statis — tidak ada lagi
-  bagian yang bisa diklik/diedit pengunjung. Kalau mau ganti teks
-  atau foto, edit LANGSUNG di file HTML ini:
-    - Teks   : cari tulisannya, ganti langsung di antara tag.
-    - Foto   : ganti nilai atribut src="..." ke path foto kamu.
-  Contoh: src="/assets/foto2.png"  ->  src="/assets/foto-aslikamu.jpg"
--->
 
-<!-- ===================== TOPBAR ===================== -->
-<!-- Selalu terlihat di semua ukuran layar. Tombol burger membuka sidebar,
-     judul di sampingnya hilang otomatis begitu halaman discroll. -->
+
+
+
 <div class="topbar" id="topbar">
   <button class="topbar__burger" id="openSidebar" aria-label="Buka menu" aria-controls="sidebar" aria-expanded="false">
     <i class="fa-solid fa-bars"></i>
@@ -33,10 +24,7 @@
 </div>
 
 <!-- ===================== SIDEBAR ===================== -->
-<!-- Sidebar selalu tersembunyi (off-canvas) di semua ukuran layar,
-     dibuka lewat tombol burger, ditutup lewat tombol ✕ di dalamnya.
-     Saat terbuka, konten (.book) ikut bergeser ke kanan — sidebar
-     tidak pernah menumpuk/menutupi halaman. -->
+
 <aside class="sidebar" id="sidebar">
   <div class="sidebar__header">
     <div class="sidebar__brand">
@@ -68,7 +56,8 @@
   </div>
 </aside>
 
-<!-- Popup menu kecil (nempel di tombol "Menu" sidebar) -->
+
+  
 <div class="menu-popup" id="menuPopup">
   <a class="menu-popup__item" href="mailto:saidaziz.expert@gmail.com"><i class="fa-solid fa-envelope"></i> Gmail</a>
   <a class="menu-popup__item" href="about.html" target="_blank"><i class="fa-solid fa-circle-info"></i> About Web</a>
@@ -76,9 +65,7 @@
   <div class="menu-popup__footer">PKKMB 2026 · Telkom University</div>
 </div>
 
-<!-- ===================== KONTEN UTAMA ===================== -->
-<!-- Semua isi buku (hero, daftar isi, bab 01–08) dibungkus di sini,
-     supaya bisa digeser bersama saat sidebar dibuka. -->
+
 <main class="book" id="book">
 
   <!-- ===== HERO (HALAMAN PEMBUKA) ===== -->
@@ -105,7 +92,7 @@
     </div>
   </section>
 
-  <!-- ===== DAFTAR ISI (TOC) ===== -->
+  <!-- ===== DAFTAR ISI  ===== -->
   <section id="discover" class="toc-section">
     <div class="toc-heading">
       <p class="eyebrow">Starter Book</p>
@@ -177,7 +164,7 @@
       </div>
  
 
-      <!-- Ganti src di bawah ini untuk mengganti foto formal -->
+     
       <div class="polaroid">
         <img src="/assets/foto2.png" alt="Foto formal Sa'id Abdul Aziz">
         <span class="polaroid__pin"><i class="fa-solid fa-thumbtack"></i></span>
@@ -293,7 +280,7 @@
     </div>
   </section>
 
-  <!-- ===== BAB 05 — PENGALAMAN (TIMELINE) ===== -->
+  <!-- ===== BAB 05 — PENGALAMAN  ===== -->
   <section class="page" id="pengalaman">
     <p class="eyebrow">Bab 05</p>
     <h2 class="pagetitle">Experience</h2>
@@ -317,9 +304,8 @@
     </div>
   </section>
 
-  <!-- ===== BAB 06 — SWOT (FLIP CARD) ===== -->
-  <!-- Klik kartu untuk membalik dan melihat isinya — ini satu-satunya
-       interaksi yang tersisa untuk pengunjung, isinya tetap statis. -->
+  <!-- ===== BAB 06 — SWOT  ===== -->
+ 
   <section class="page page--dark" id="swot">
     <p class="eyebrow eyebrow--light">Bab 06</p>
     <h2 class="pagetitle pagetitle--light">SWOT Analysis</h2>
@@ -400,8 +386,7 @@
 
 
   <!-- ===== BAB 07 — MIND OF US (TEMAN) ===== -->
-  <!-- Ganti nama/asal/prodi/hobi/fun fact tiap teman langsung di teks
-       di bawah, dan ganti src foto masing-masing kalau sudah ada. -->
+ 
   <section class="page" id="mindofus">
     <p class="eyebrow">Bab 07</p>
     <h2 class="pagetitle">Mind of Us</h2>
