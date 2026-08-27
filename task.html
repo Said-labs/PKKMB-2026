@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Recap Kegiatan — Logbook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<link rel="stylesheet" href="task.css">
+</head>
+<body>
+
+<div class="deskbg">
+
+  <!-- ===== HEADER / STATS STRIP ===== -->
+  <header class="masthead">
+    <div class="masthead-left">
+      <span class="eyebrow">Logbook Kegiatan</span>
+      <h1 id="TaskTitle">Task Kegiatan</h1>
+      <p class="subtitle" id="TaskSubtitle">Dokumentasi harian, difilekan otomatis dari Google Drive.</p>
+    </div>
+    <div class="stat-rail" id="statRail">
+      <!-- diisi oleh JS: peserta, sesi, jam selesai, jumlah media -->
+    </div>
+  </header>
+
+  <!-- ===== FLIPBOOK ===== -->
+  <main class="book-wrap">
+    <button class="flip-btn flip-prev" id="btnPrev" aria-label="Halaman sebelumnya">‹</button>
+
+    <div class="book" id="book">
+      <div class="book-shadow"></div>
+      <div class="pages" id="pages"><!-- halaman per tanggal dirender JS --></div>
+    </div>
+
+    <button class="flip-btn flip-next" id="btnNext" aria-label="Halaman berikutnya">›</button>
+
+    <!-- tab tanggal di tepi kanan, seperti pembatas buku -->
+    <nav class="date-tabs" id="dateTabs" aria-label="Loncat ke tanggal"></nav>
+    
+  </main>
+
+  <p class="page-indicator" id="pageIndicator"></p>
+</div>
+
+<!-- ===== LIGHTBOX ===== -->
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <div class="lb-topbar">
+    <span class="lb-brand"> TASK PKKMB</span>
+    <button class="lb-close" id="lbClose" aria-label="Tutup">✕</button>
+  </div>
+
+  <div class="lb-body">
+    <button class="lb-nav lb-nav-prev" id="lbPrev" aria-label="Media sebelumnya">‹</button>
+
+    <div class="lb-stage">
+      <div class="lb-frame" id="lbFrame">
+        <!-- gambar / video dimasukkan JS -->
+      </div>
+      <div class="lb-controls">
+        <label class="lb-slider">
+          <span>Zoom</span>
+          <input type="range" id="zoomRange" min="1" max="3" step="0.05" value="1">
+        </label>
+        <label class="lb-slider">
+          <span>Kecerahan</span>
+          <input type="range" id="brightRange" min="40" max="160" step="5" value="100">
+        </label>
+        <button class="lb-reset" id="lbReset">Reset tampilan</button>
+      </div>
+    </div>
+
+    <button class="lb-nav lb-nav-next" id="lbNext" aria-label="Media berikutnya">›</button>
+
+    <aside class="lb-side">
+      <div class="lb-side-scroll">
+        <p class="lb-date" id="lbDate">—</p>
+        <h2 class="lb-title" id="lbTitle">—</h2>
+        <p class="lb-desc" id="lbDesc">—</p>
+
+        <div class="lb-tags" id="lbTags"></div>
+
+        <div class="lb-audio-block" id="lbAudioBlock" hidden>
+          <span class="lb-block-label">Audio</span>
+          <audio id="lbAudio" controls></audio>
+        </div>
+
+        <a class="lb-link-btn" id="lbLinkBtn" href="#" target="_blank" rel="noopener" hidden>
+  <span class="lb-link-icon">🔗</span>
+  <span id="lbLinkText">Buka tautan</span>
+</a>
+
+  <a class="lb-link-btn lb-link-file" id="lbFileBtn" href="#" target="_blank" rel="noopener" hidden>
+    <span class="lb-link-icon">📄</span>
+    <span id="lbFileText">Buka file</span>
+  </a>
+</div>
+
+        <div class="lb-map-block" id="lbMapBlock" hidden>
+          <span class="lb-block-label">Lokasi</span>
+          <iframe id="lbMap" class="lb-map" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+
+        <div class="lb-share-block">
+          <span class="lb-block-label">Bagikan</span>
+          <div class="lb-share-row">
+            <button class="share-btn share-copy" id="shareCopy" title="Salin tautan">🔗</button>
+            <a class="share-btn share-wa" id="shareWA" target="_blank" rel="noopener" title="WhatsApp">WA</a>
+            <a class="share-btn share-fb" id="shareFB" target="_blank" rel="noopener" title="Facebook">FB</a>
+            <a class="share-btn share-tw" id="shareTW" target="_blank" rel="noopener" title="X / Twitter">X</a>
+            <a class="share-btn share-tg" id="shareTG" target="_blank" rel="noopener" title="Telegram">TG</a>
+          </div>
+          <p class="copy-note" id="copyNote"></p>
+        </div>
+      </div>
+    </aside>
+  </div>
+</div>
+
+
+<script src="task.js"></script>
+</body>
+</html>

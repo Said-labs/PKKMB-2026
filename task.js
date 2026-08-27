@@ -1,0 +1,413 @@
+/* =====================================================================
+   1) KONFIGURASI — EDIT BAGIAN INI SESUAI KEGIATANMU
+   ===================================================================== */
+
+const CONFIG = {
+  title: "Task PKKMB",
+  subtitle: "Documentation of assignments from the pre-PKKMB phase through the completion of the PKKMB at Telkom University.",
+  // isi manual kalau mau override, biarkan null supaya dihitung otomatis dari data di bawah
+  stats: {
+    Assigned: 0, // angka bebas, edit sendiri
+    Submitted: null,
+    // null = dihitung otomatis dari field "time" tiap item, format "HH:MM"
+  }
+};
+
+
+const ITEMS = [
+  {
+    id: "m1",
+    type: "image",
+    date: "2026-08-27",
+    time: "04.00",
+    driveLink: "https://drive.google.com/file/d/1n6Kz4EAl0-XK97vGftuFkJHiop-rWuPG/view?usp=drive_link",
+    title: "TWIBON FOTO PKKMB 2026",
+    description: "Sesi santai sebelum evaluasi akhir minggu, sambil membahas rencana lanjutan.",
+    tags: ["TWIBON", "PKKMB2026", "TELKOM UNIVERSITY", " INFORATIKA"],
+     link: "https://www.instagram.com/p/DchAckUk9k4/?utm_source=ig_web_copy_link&igsi=MzRlODBiNWFlZA==",   
+  linkLabel: "LINK TWIBON",
+   //ocation: { lat: -6.9147, lng: 107.6098, name: "Bandung, Jawa Barat" },
+    audio: null,
+  },
+
+   
+
+  {
+    id: "m2",
+    type: "image",
+    date: "2026-08-30",
+    time: "10:45",
+    driveLink: "https://drive.google.com/file/d/1n6Kz4EAl0-XK97vGftuFkJHiop-rWuPG/view?usp=drive_link",
+    title: "Presentasi materi di kelas",
+    description: "Pemaparan materi utama menggunakan proyektor, diikuti sesi tanya jawab.",
+    tags: ["presentasi", "kelas"],
+    location: { lat: -6.9034, lng: 107.6188, name: "Kampus Utama" },
+    audio: null,
+  },
+  {
+    id: "m3",
+    type: "video",
+    date: "2026-08-27",
+    time: "04:00",
+    driveLink: "https://drive.google.com/file/d/1YtW4Pt6_eOrm9glr0II8JvE3QscQH7FJ/view?usp=sharing",
+    title: "TWIBON VIDEO PKKMB 2026",
+    description: "TWIBON BERBENTUK VIDEO",
+    tags: ["TWIBON", "PKKMB2026", "TELKOM UNIVERSITY", " INFORATIKA"],
+    location: null,
+    audio: null,
+  },
+
+   {
+    id: "m4",
+    type: "image",
+    date: "2026-08-27",
+    time: "04.00",
+    driveLink: "https://drive.google.com/file/d/1yEGnp9GdTIzkq_ZLqkYNC5Y09QOWL_9l/view?usp=sharing",
+    title: "PORTOFOLIO & RESUME",
+    description: "Sesi santai sebelum evaluasi akhir minggu, sambil membahas rencana lanjutan.",
+    tags: ["PORTOFOLIO", "RESUME", "PEMBELAJARAN"],
+  fileLink: "index.html",  // ⬅️ link ke file lokal (opsional, isi null kalau gaada)
+  fileLabel: "BUKA PORTOFOLIO & RESUME",
+  
+    audio: null,
+  },
+  // tambahkan objek baru di sini, format sama seperti di atas
+];
+
+/* =====================================================================
+   3) GOOGLE DRIVE → EMBED HELPERS
+   ===================================================================== */
+
+function extractDriveId(link) {
+  if (!link) return null;
+  const patterns = [/\/d\/([a-zA-Z0-9_-]+)/, /[?&]id=([a-zA-Z0-9_-]+)/];
+  for (const re of patterns) {
+    const m = link.match(re);
+    if (m) return m[1];
+  }
+  return null;
+}
+
+function driveThumbUrl(id, size = "w800") {
+  return `https://drive.google.com/thumbnail?id=${id}&sz=${size}`;
+}
+function driveFullImageUrl(id) {
+  return `https://drive.google.com/thumbnail?id=${id}&sz=w2000`;
+}
+function drivePreviewUrl(id) {
+  return `https://drive.google.com/file/d/${id}/preview`;
+}
+
+/* =====================================================================
+   4) UTIL TANGGAL (format hari Indonesia, seperti label Google Photos)
+   ===================================================================== */
+
+const HARI = ["Min", "Sen", "Sel", "Rab", "Kam", "Jum", "Sab"];
+const BULAN = ["Jan","Feb","Mar","Apr","Mei","Jun","Jul","Agu","Sep","Okt","Nov","Des"];
+
+function formatTanggal(iso) {
+  const d = new Date(iso + "T00:00:00");
+  return `${HARI[d.getDay()]}, ${d.getDate()} ${BULAN[d.getMonth()]} ${d.getFullYear()}`;
+}
+
+/* =====================================================================
+   5) BANGUN STRUKTUR HALAMAN (dikelompokkan per tanggal, terbaru dulu)
+   ===================================================================== */
+
+function groupByDate(items) {
+  const map = new Map();
+  items.forEach(it => {
+    if (!map.has(it.date)) map.set(it.date, []);
+    map.get(it.date).push(it);
+  });
+  return [...map.entries()]
+    .sort((a, b) => b[0].localeCompare(a[0]))
+    .map(([date, list]) => ({ date, items: list }));
+}
+
+const PAGES = groupByDate(ITEMS);
+let currentPage = 0;
+let flatIndex = -1; // index media aktif di lightbox, berjalan lintas semua ITEMS terurut sama seperti tampilan
+
+// urutan flat yang match urutan tampilan (ikuti urutan PAGES)
+const FLAT_ITEMS = PAGES.flatMap(p => p.items);
+
+/* =====================================================================
+   6) RENDER HEADER / STATISTIK
+   ===================================================================== */
+
+function renderStats() {
+  document.getElementById("TaskTitle").textContent = CONFIG.title;
+  document.getElementById("TaskSubtitle").textContent = CONFIG.subtitle;
+
+  const jumlahFoto = ITEMS.filter(i => i.type === "image").length;
+  const jumlahVideo = ITEMS.filter(i => i.type === "video").length;
+
+  // Assigned: angka bebas dari CONFIG (default ke jumlah ITEMS kalau tidak diisi)
+  const assigned = CONFIG.stats.Assigned ?? ITEMS.length;
+  // Submitted: kalau null, dihitung otomatis dari item yang punya field "time"
+  const submitted = CONFIG.stats.Submitted ?? ITEMS.filter(i => Boolean(i.time)).length;
+
+  const cards = [
+    { num: assigned, label: "ASSIGNED" },
+    { num: submitted, label: "SUBMITTED" },
+    { num: jumlahFoto, label: "Foto" },
+    { num: jumlahVideo, label: "Video" },
+  ];
+
+  document.getElementById("statRail").innerHTML = cards.map(c => `
+    <div class="stat-card">
+      <span class="stat-num">${c.num}</span>
+      <span class="stat-label">${c.label}</span>
+    </div>
+  `).join("");
+}
+
+/* =====================================================================
+   7) RENDER FLIPBOOK
+   ===================================================================== */
+
+function thumbHTML(item) {
+  const id = extractDriveId(item.driveLink);
+  if (item.type === "video") {
+    return `<img src="${id ? driveThumbUrl(id) : ''}" alt="${item.title}" loading="lazy"><span class="vid-badge">▶ video</span>`;
+  }
+  return `<img src="${id ? driveThumbUrl(id) : ''}" alt="${item.title}" loading="lazy">`;
+}
+
+function renderPages() {
+  const pagesEl = document.getElementById("pages");
+  pagesEl.innerHTML = PAGES.map((page, pIdx) => `
+    <section class="page" data-index="${pIdx}">
+      <h2 class="page-date">${formatTanggal(page.date)} <span class="stamp">${page.items.length} media</span></h2>
+      <div class="page-grid">
+        ${page.items.map(item => `
+          <div class="thumb" data-id="${item.id}" role="button" tabindex="0" aria-label="Buka ${item.title}">
+            ${thumbHTML(item)}
+            <span class="thumb-title">${item.title}</span>
+          </div>
+        `).join("")}
+      </div>
+    </section>
+  `).join("");
+
+  document.getElementById("dateTabs").innerHTML = PAGES.map((page, i) => `
+    <button class="date-tab" data-index="${i}">${formatTanggal(page.date).split(", ")[1] || page.date}</button>
+  `).join("");
+
+  pagesEl.querySelectorAll(".thumb").forEach(el => {
+    el.addEventListener("click", () => openLightboxById(el.dataset.id));
+    el.addEventListener("keydown", e => { if (e.key === "Enter") openLightboxById(el.dataset.id); });
+  });
+
+  document.getElementById("dateTabs").querySelectorAll(".date-tab").forEach(btn => {
+    btn.addEventListener("click", () => goToPage(parseInt(btn.dataset.index, 10)));
+  });
+
+  updateBookView();
+}
+
+function updateBookView() {
+  const pageEls = document.querySelectorAll(".page");
+  pageEls.forEach((el, i) => {
+    el.classList.remove("is-active", "is-prevstack", "is-nextstack");
+    if (i === currentPage) el.classList.add("is-active");
+    else if (i < currentPage) el.classList.add("is-prevstack");
+    else el.classList.add("is-nextstack");
+  });
+
+  document.querySelectorAll(".date-tab").forEach((btn, i) => {
+    btn.classList.toggle("active", i === currentPage);
+  });
+
+  document.getElementById("btnPrev").disabled = currentPage === 0;
+  document.getElementById("btnNext").disabled = currentPage === PAGES.length - 1;
+  document.getElementById("pageIndicator").textContent = `Halaman ${currentPage + 1} dari ${PAGES.length}`;
+}
+
+function goToPage(i) {
+  currentPage = Math.max(0, Math.min(PAGES.length - 1, i));
+  updateBookView();
+}
+
+document.getElementById("btnPrev").addEventListener("click", () => goToPage(currentPage - 1));
+document.getElementById("btnNext").addEventListener("click", () => goToPage(currentPage + 1));
+document.addEventListener("keydown", e => {
+  if (lightboxOpen()) return;
+  if (e.key === "ArrowLeft") goToPage(currentPage - 1);
+  if (e.key === "ArrowRight") goToPage(currentPage + 1);
+});
+
+/* =====================================================================
+   8) LIGHTBOX
+   ===================================================================== */
+
+const lb = document.getElementById("lightbox");
+const lbFrame = document.getElementById("lbFrame");
+const zoomRange = document.getElementById("zoomRange");
+const brightRange = document.getElementById("brightRange");
+
+function lightboxOpen() { return lb.classList.contains("open"); }
+
+function openLightboxById(id) {
+  const idx = FLAT_ITEMS.findIndex(i => i.id === id);
+  if (idx === -1) return;
+  flatIndex = idx;
+  renderLightboxItem();
+  lb.classList.add("open");
+  lb.setAttribute("aria-hidden", "false");
+}
+
+function closeLightbox() {
+  lb.classList.remove("open");
+  lb.setAttribute("aria-hidden", "true");
+  const audio = document.getElementById("lbAudio");
+  audio.pause();
+}
+
+function renderLightboxItem() {
+  const item = FLAT_ITEMS[flatIndex];
+  const driveId = extractDriveId(item.driveLink);
+
+  // media utama
+  zoomRange.value = 1;
+  brightRange.value = 100;
+  if (item.type === "video") {
+    lbFrame.innerHTML = `<iframe src="${driveId ? drivePreviewUrl(driveId) : ''}" allow="autoplay" allowfullscreen></iframe>`;
+  } else {
+    lbFrame.innerHTML = `<img src="${driveId ? driveFullImageUrl(driveId) : ''}" alt="${item.title}" id="lbMedia">`;
+  }
+  applyFrameStyle();
+
+  // teks
+  document.getElementById("lbDate").textContent = formatTanggal(item.date) + (item.time ? ` · ${item.time}` : "");
+  document.getElementById("lbTitle").textContent = item.title;
+  document.getElementById("lbDesc").textContent = item.description || "";
+  document.getElementById("lbTags").innerHTML = (item.tags || []).map(t => `<span class="tag-pill">#${t}</span>`).join("");
+
+  // audio
+  const audioBlock = document.getElementById("lbAudioBlock");
+  const audioEl = document.getElementById("lbAudio");
+  if (item.audio) {
+    audioBlock.hidden = false;
+    audioEl.src = item.audio;
+  } else {
+    audioBlock.hidden = true;
+    audioEl.removeAttribute("src");
+  }
+
+  const linkBtn = document.getElementById("lbLinkBtn");
+const linkText = document.getElementById("lbLinkText");
+if (item.link) {
+  linkBtn.hidden = false;
+  linkBtn.href = item.link;
+  linkText.textContent = item.linkLabel || "Buka tautan";
+} else {
+  linkBtn.hidden = true;
+  linkBtn.removeAttribute("href");
+}
+
+document.getElementById("lbDesc").textContent = item.description || "";
+
+
+const fileBtn = document.getElementById("lbFileBtn");
+const fileText = document.getElementById("lbFileText");
+if (item.fileLink) {
+  fileBtn.hidden = false;
+  fileBtn.href = item.fileLink;
+  fileText.textContent = item.fileLabel || "Buka file";
+} else {
+  fileBtn.hidden = true;
+  fileBtn.removeAttribute("href");
+}
+
+
+document.getElementById("lbTags").innerHTML = (item.tags || []).map(t => `<span class="tag-pill">#${t}</span>`).join("");
+  // peta
+  const mapBlock = document.getElementById("lbMapBlock");
+  const mapEl = document.getElementById("lbMap");
+  if (item.location) {
+    mapBlock.hidden = false;
+    mapEl.src = `https://www.google.com/maps?q=${item.location.lat},${item.location.lng}&z=15&output=embed`;
+  } else {
+    mapBlock.hidden = true;
+    mapEl.removeAttribute("src");
+  }
+
+  // share
+  const shareUrl = `${location.origin}${location.pathname}#${item.id}`;
+  const shareText = encodeURIComponent(`${item.title} — ${CONFIG.title}`);
+  document.getElementById("shareWA").href = `https://wa.me/?text=${shareText}%20${encodeURIComponent(shareUrl)}`;
+  document.getElementById("shareFB").href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`;
+  document.getElementById("shareTW").href = `https://twitter.com/intent/tweet?text=${shareText}&url=${encodeURIComponent(shareUrl)}`;
+  document.getElementById("shareTG").href = `https://t.me/share/url?url=${encodeURIComponent(shareUrl)}&text=${shareText}`;
+  document.getElementById("shareCopy").onclick = () => {
+    navigator.clipboard.writeText(shareUrl).then(() => {
+      const note = document.getElementById("copyNote");
+      note.textContent = "Tautan disalin!";
+      setTimeout(() => note.textContent = "", 1800);
+    });
+  };
+
+  history.replaceState(null, "", `#${item.id}`);
+}
+
+function applyFrameStyle() {
+  const media = lbFrame.querySelector("img, iframe, video");
+  if (!media) return;
+  media.style.transform = `scale(${zoomRange.value})`;
+  media.style.filter = `brightness(${brightRange.value}%)`;
+}
+
+zoomRange.addEventListener("input", applyFrameStyle);
+brightRange.addEventListener("input", applyFrameStyle);
+document.getElementById("lbReset").addEventListener("click", () => {
+  zoomRange.value = 1; brightRange.value = 100; applyFrameStyle();
+});
+
+document.getElementById("lbClose").addEventListener("click", closeLightbox);
+document.getElementById("lbPrev").addEventListener("click", () => stepLightbox(-1));
+document.getElementById("lbNext").addEventListener("click", () => stepLightbox(1));
+
+function stepLightbox(dir) {
+  flatIndex = (flatIndex + dir + FLAT_ITEMS.length) % FLAT_ITEMS.length;
+  renderLightboxItem();
+}
+
+document.addEventListener("keydown", e => {
+  if (!lightboxOpen()) return;
+  if (e.key === "Escape") closeLightbox();
+  if (e.key === "ArrowLeft") stepLightbox(-1);
+  if (e.key === "ArrowRight") stepLightbox(1);
+});
+
+// pan gambar saat di-zoom (drag)
+(function enablePan() {
+  let dragging = false, startX = 0, startY = 0, curX = 0, curY = 0;
+  lbFrame.addEventListener("pointerdown", e => {
+    if (zoomRange.value <= 1) return;
+    dragging = true; startX = e.clientX - curX; startY = e.clientY - curY;
+  });
+  window.addEventListener("pointermove", e => {
+    if (!dragging) return;
+    curX = e.clientX - startX; curY = e.clientY - startY;
+    const media = lbFrame.querySelector("img, iframe, video");
+    if (media) media.style.transform = `scale(${zoomRange.value}) translate(${curX / zoomRange.value}px, ${curY / zoomRange.value}px)`;
+  });
+  window.addEventListener("pointerup", () => dragging = false);
+  zoomRange.addEventListener("input", () => { curX = 0; curY = 0; });
+})();
+
+/* =====================================================================
+   9) INIT
+   ===================================================================== */
+
+renderStats();
+renderPages();
+
+// buka langsung ke item tertentu kalau ada #id di URL saat load
+if (location.hash) {
+  const id = location.hash.slice(1);
+  const pageIdx = PAGES.findIndex(p => p.items.some(i => i.id === id));
+  if (pageIdx !== -1) { currentPage = pageIdx; updateBookView(); openLightboxById(id); }
+}

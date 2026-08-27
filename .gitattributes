@@ -1,0 +1,13 @@
+# Semua file text otomatis diatur line endings
+* text=auto
+
+# File shell script harus LF
+*.sh text eol=lf
+
+# File batch harus CRLF
+*.bat text eol=crlf
+
+# Tandai file binary (jangan diubah line endings)
+*.png binary
+*.jpg binary
+*.zip binary
