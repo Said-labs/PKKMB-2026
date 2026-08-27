@@ -338,7 +338,7 @@ body{
 .lb-frame{
   flex:1;
   width:100%;
-  display:block; align-item:center; justify-content:center;
+  display:flex; align-item:center; justify-content:center;
   overflow:hidden;
     max-height:65vh;
   border-radius: 10px;
