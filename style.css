@@ -1,33 +1,6 @@
-/* =========================================================
-   TELUTIZEN STARTER BOOK — STYLESHEET
-   Dibagi per-bagian, cari komentar besar "===== NAMA BAGIAN ====="
-   untuk lompat ke bagian yang mau diedit.
 
-   Catatan: semua konten di halaman ini statis (diisi lewat kode,
-   bukan lewat web), jadi tidak ada lagi gaya untuk elemen yang
-   bisa diklik/diedit pengunjung.
 
-   Daftar isi:
-   1.  Root & reset
-   2.  Layout buku (.book / .page)
-   3.  Topbar (tombol buka sidebar, semua ukuran layar)
-   4.  Sidebar (panel navigasi kiri, off-canvas di semua ukuran layar)
-   5.  Popup menu (titik tiga)
-   6.  Daftar isi (TOC grid)
-   7.  Bab 01 — Profil diri
-   8.  Bab 02 — Deskripsi singkat
-   9.  Bab 03 — Hobi
-   10. Bab 04 — Harapan
-   11. Bab 05 — Pengalaman (timeline)
-   12. Bab 06 — SWOT (flip card)
-   13. Bab 07 — Mind of Us (teman)
-   14. Bab 08 — Resume
-   15. Hero (halaman pembuka)
-   16. Responsif (penyesuaian halus per lebar layar)
-   17. Print
-========================================================= */
-
-/* ===================== 1. ROOT & RESET ===================== */
+/* =====================  ROOT & RESET ===================== */
 :root{
   /* palet warna utama */
   --maroon-950:#2c0707;
@@ -49,9 +22,6 @@
   --radius-lg:26px;
   --radius-md:16px;
 
-  /* Lebar sidebar & tinggi topbar — SATU nilai yang berlaku di semua
-     ukuran layar (desktop, tablet, mobile). Sidebar tidak pernah
-     berubah ukuran atau perilaku antar breakpoint. */
   --sidebar-w:280px;
   --topbar-h:64px;
   --sidebar-speed:.32s;
@@ -71,8 +41,7 @@ body{
   min-height:100vh;
 }
 
-/* Saat sidebar terbuka, kunci scroll horizontal supaya animasi geser
-   halaman tidak memunculkan scrollbar sesaat. */
+
 body.sidebar-open{ overflow-x:hidden; }
 
 h1,h2,h3,h4{ font-family:'Baloo 2', sans-serif; font-weight:700; margin:0; }
@@ -81,11 +50,8 @@ h1,h2,h3,h4{ font-family:'Baloo 2', sans-serif; font-weight:700; margin:0; }
 ::-webkit-scrollbar-track{ background:rgba(0,0,0,.15); }
 ::-webkit-scrollbar-thumb{ background:var(--red-600); border-radius:999px; }
 
-/* ===================== 2. LAYOUT BUKU ===================== */
-/* .book membungkus SEMUA konten halaman (hero, TOC, bab 01–08).
-   Saat sidebar dibuka, .book digeser ke kanan sejauh lebar sidebar —
-   jadi sidebar mendorong konten, bukan menutupinya. Perilaku ini
-   sama persis di semua ukuran layar. */
+/* =====================  LAYOUT BUKU ===================== */
+
 .book{
   margin-left:0;
   padding-top:var(--topbar-h);
@@ -134,11 +100,8 @@ body.sidebar-open .book{
 }
 .longtext--light{ color:#fff; }
 
-/* ===================== 3. TOPBAR ===================== */
-/* Selalu tampil, di semua ukuran layar — cuma berisi tombol pembuka
-   sidebar + judul singkat. Judulnya hilang begitu halaman discroll,
-   dan seluruh topbar disembunyikan selama sidebar terbuka (sidebar
-   sudah punya tombol ✕ sendiri untuk menutup). */
+/* =====================  TOPBAR ===================== */
+
 .topbar{
   position:fixed;
   top:16px; left:16px;
@@ -188,9 +151,7 @@ body.sidebar-open .topbar{
   transform:translateX(0);
   transition:opacity .2s ease, max-width .2s ease, transform .2s ease, padding .2s ease, margin .2s ease;
 }
-/* Saat halaman discroll ke bawah, tulisan judul di topbar disembunyikan
-   pelan-pelan — cuma tombol pembuka sidebar yang tersisa. Berlaku sama
-   di semua ukuran layar. */
+
 .topbar.is-scrolled .topbar__title{
   opacity:0;
   max-width:0;
@@ -200,10 +161,8 @@ body.sidebar-open .topbar{
   transform:translateX(-8px);
 }
 
-/* ===================== 4. SIDEBAR ===================== */
-/* Off-canvas di semua ukuran layar: default tersembunyi di kiri,
-   digeser masuk lewat class "is-open". Lebar & perilaku TIDAK
-   berubah sama sekali antar breakpoint. */
+/* =====================  SIDEBAR ===================== */
+
 .sidebar{
   position:fixed;
   top:0; left:0; bottom:0;
@@ -263,8 +222,7 @@ body.sidebar-open .topbar{
 .sidebar__profile h2{ font-size:1rem; margin:0 0 4px; color:#fff; }
 .sidebar__profile p{ margin:0; font-size:.78rem; color:var(--cream-100); font-family:'Space Mono',monospace; }
 
-/* Daftar menu bisa di-scroll sendiri kalau lebih panjang dari tinggi
-   layar (min-height:0 wajib ada supaya flex item mau menyusut). */
+
 .sidebar__nav{
   display:flex; flex-direction:column; gap:4px;
   flex:1;
@@ -294,7 +252,7 @@ body.sidebar-open .topbar{
 .sidebar__footer{ border-top:1px solid rgba(255,255,255,.1); padding-top:12px; flex-shrink:0; }
 .sidebar__item--menu{ width:100%; background:none; border:none; cursor:pointer; font-family:inherit; }
 
-/* ===================== 5. POPUP MENU (TITIK TIGA) ===================== */
+/* =====================  POPUP MENU  ===================== */
 .menu-popup{
   position:fixed; left:16px; bottom:76px; width:210px;
   background:var(--cream-50); color:var(--ink);
@@ -314,7 +272,7 @@ body.sidebar-open .topbar{
   padding:8px 10px 2px; border-top:1px solid rgba(0,0,0,.08); margin-top:4px;
 }
 
-/* ===================== 6. DAFTAR ISI (TOC GRID) ===================== */
+/* =====================  DAFTAR ISI  ===================== */
 .toc-section{
   padding:100px clamp(20px,7vw,90px);
   background:var(--red-600);
@@ -401,7 +359,7 @@ body.sidebar-open .topbar{
 .toc-card i{ color:var(--red-600); transition:transform .25s ease; }
 .toc-card:hover i{ transform:translateX(5px); }
 
-/* ===================== 7. BAB 01 — PROFIL DIRI ===================== */
+/* =====================  BAB 01 — PROFIL DIRI ===================== */
 .profilgrid{ display:grid; grid-template-columns:1.3fr .8fr; gap:clamp(28px,4vw,60px); align-items:center; }
 .nameplate-lg{
   font-family:'Baloo 2',sans-serif; font-size:clamp(1.4rem,3vw,2.4rem);
@@ -419,7 +377,7 @@ body.sidebar-open .topbar{
 }
 .fieldlist__value{ color:var(--cream-50); font-size:1.02rem; }
 
-/* Foto formal — statis, ganti lewat atribut src di index.html */
+
 .polaroid{
   background:var(--cream-50); padding:14px 14px 46px; border-radius:10px;
   transform:rotate(3deg); box-shadow:var(--shadow-soft); position:relative;
@@ -434,7 +392,7 @@ body.sidebar-open .topbar{
   transform:rotate(20deg);
 }
 
-/* ===================== 8. BAB 02 — DESKRIPSI SINGKAT ===================== */
+/* =====================  BAB 02 — DESKRIPSI SINGKAT ===================== */
 .deskripsigrid{ display:grid; grid-template-columns:.9fr 1.4fr; gap:clamp(24px,4vw,56px); align-items:start; }
 .wordchips__label{
   font-family:'Space Mono',monospace; text-transform:uppercase; letter-spacing:.1em;
@@ -447,7 +405,7 @@ body.sidebar-open .topbar{
   overflow-wrap:anywhere;
 }
 
-/* ===================== 9. BAB 03 — HOBI ===================== */
+/* =====================  BAB 03 — HOBI ===================== */
 .hobigrid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
@@ -470,7 +428,7 @@ body.sidebar-open .topbar{
 .funfact__title{ margin:0 0 12px; font-family:'Baloo 2',sans-serif; color:#fff; }
 .funfact ul{ margin:0; padding-left:18px; color:#fff; display:flex; flex-direction:column; gap:10px; font-size:.95rem; }
 
-/* ===================== 10. BAB 04 — HARAPAN ===================== */
+/* =====================  BAB 04 — HARAPAN ===================== */
 .harapanwrap{
   display:grid;
   grid-template-columns:230px 1fr;
@@ -504,7 +462,7 @@ body.sidebar-open .topbar{
 .tuvalue__tri span:nth-child(2){ right:-22px; bottom:50%; }
 .tuvalue__tri span:nth-child(3){ left:-26px; bottom:50%; }
 
-/* ===================== 11. BAB 05 — PENGALAMAN (TIMELINE) ===================== */
+/* =====================  BAB 05 — PENGALAMAN  ===================== */
 .timeline{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
@@ -523,7 +481,7 @@ body.sidebar-open .topbar{
 .timeline__img{ height:170px; background-size:cover; background-position:center; }
 .timeline__label{ padding:14px; margin:0; font-family:'Baloo 2',sans-serif; color:var(--cream-50); }
 
-/* ===================== 12. BAB 06 — SWOT (FLIP CARD) ===================== */
+/* =====================  BAB 06 — SWOT ===================== */
 .swotgrid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
@@ -556,7 +514,7 @@ body.sidebar-open .topbar{
 .flipcard__desc{ margin:0; font-size:.82rem; color:var(--ink-soft); }
 .flipcard__answer{ flex:1; font-size:.88rem; border-top:1px dashed rgba(0,0,0,.2); padding-top:8px; white-space:pre-line; }
 
-/* ===================== 13. BAB 07 — MIND OF US (TEMAN) ===================== */
+/* =====================  BAB 07 — MIND OF US (TEMAN) ===================== */
 .friendweb__me{ text-align:center; margin-bottom:34px; }
 .friendweb__label{
   display:inline-block;
@@ -573,8 +531,7 @@ body.sidebar-open .topbar{
   background:rgba(0,0,0,.2); border:1px solid rgba(255,255,255,.12);
   border-radius:var(--radius-md); padding:16px; text-align:center;
 }
-/* Foto teman — statis. Kalau src belum diisi/gagal dimuat, ikon
-   default di belakangnya (fa-user) yang akan terlihat. */
+
 .friendcard__photo{
   width:84px; height:84px; border-radius:50%; margin:0 auto 12px;
   background:linear-gradient(135deg,var(--red-600),var(--ember-500));
@@ -592,7 +549,7 @@ body.sidebar-open .topbar{
 .friendcard ul{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:8px; }
 .friendcard li{ font-size:.85rem; color:var(--cream-100); }
 
-/* ===================== 14. BAB 08 — RESUME ===================== */
+/* =====================  BAB 08 — RESUME ===================== */
 .resumemeta{
   display:flex; flex-wrap:wrap; gap:22px; margin-bottom:30px;
   font-size:.95rem; color:var(--cream-100);
@@ -615,7 +572,7 @@ body.sidebar-open .topbar{
   font-family:'Space Mono',monospace; font-size:.72rem; color:var(--cream-100); opacity:.7;
 }
 
-/* ===================== 15. HERO (HALAMAN PEMBUKA) ===================== */
+/* =====================  HERO  ===================== */
 .hero{
   min-height:calc(100vh - var(--topbar-h));
   padding:clamp(50px,8vw,90px) clamp(20px,7vw,7vw) clamp(60px,10vw,100px);
@@ -670,10 +627,8 @@ body.sidebar-open .topbar{
 
 .btn--outline{ border:1px solid rgba(255,255,255,.35); background:rgba(255,255,255,.06); color:#fff; }
 
-/* ===================== 16. RESPONSIF ===================== */
-/* Catatan: sidebar & topbar SENGAJA tidak diubah di sini — perilaku
-   dan ukurannya sama di semua lebar layar. Yang menyesuaikan hanya
-   susunan grid konten supaya tetap nyaman dibaca di layar sempit. */
+/* =====================  RESPONSIF ===================== */
+
 @media (max-width:960px){
   .profilgrid,.deskripsigrid,.harapanwrap{ grid-template-columns:1fr; }
   .toc-grid{ grid-template-columns:1fr; }
@@ -686,14 +641,12 @@ body.sidebar-open .topbar{
   .fieldlist__label{ min-width:120px; font-size:.75rem; }
 }
 
-/* Kalau sidebar (280px) lebih lebar daripada layar, geser konten
-   selebar layar itu sendiri saja supaya tidak ada sisa negatif —
-   sidebar tetap 100% terlihat penuh karena posisinya fixed. */
+
 @media (max-width:280px){
   body.sidebar-open .book{ margin-left:100vw; }
 }
 
-/* ===================== 17. PRINT ===================== */
+/* =====================  PRINT ===================== */
 @media print{
   .sidebar,.topbar,.menu-popup{ display:none !important; }
   .book{ margin:0 !important; padding-top:0 !important; }
@@ -711,17 +664,17 @@ body.sidebar-open .topbar{
 
 .social-links {
   display: flex;
-  flex-direction: row;     /* badge berjajar horizontal */
+  flex-direction: row;   
   justify-content: flex-start;
-  gap: 8px;                /* jarak antar badge */
+  gap: 8px;              
 }
 
 .social-links img {
-  height: 28px;            /* samain tinggi badge */
+  height: 28px;           
 }
 
 
-/* teks screen reader */
+
 .sr-only {
   position: absolute;
   width: 1px;
