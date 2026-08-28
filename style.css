@@ -649,7 +649,7 @@ body.sidebar-open .topbar{
 
 .hero__actions{
   display:flex;
-  gap:14px;
+ gap: clamp(8px, 4vw, 16px); 
   flex-wrap:wrap;
   align-items:center;
   margin-top:30px;
