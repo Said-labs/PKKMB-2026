@@ -33,7 +33,7 @@ const ITEMS = [
   {
     id: "m2",
     type: "image",
-    date: "2026-08-28",
+    date: "2026-08-27",
     time: "10:00",
     driveLink: "https://drive.google.com/file/d/1KW_F7OX_18OQ8n76XKH9OgHfj82WIj2e/view?usp=sharing",
     title: "Name Tag PKKMB 2026",
@@ -72,18 +72,6 @@ const ITEMS = [
     audio: null,
   },
 
-    {
-    id: "m5",
-    type: "image",
-    date: "2026-08-28",
-    time: "17:00",
-    driveLink: "https://drive.google.com/file/d/1BRS_JGvN3TnLBu0bbiywpmAARLIkdRQ_/view?usp=sharing",
-    title: "Kelompok Selaru 2008",
-    description: "Pembuatan tugas kelompok berupa papan kelompok unutk pkkmb 2026 dengan nama kelompok selaru 2008 dengan jumlah angoota 55 orang. yang di pimpin oleh LO yang bernama  @aiscitraazali jurusan teknologi informasi  tahun masuk 2025 dan ada @khansasyahdaadia jurusan administrasi bisnis tahun 2024 ",
-    tags: ["Selaru 2008", "Pkkmb 2026"],
-    location: { lat: -6.97328, lng: 107.63034, name: "Kampus Utama" },
-    audio: null,
-  },
 
   
  
