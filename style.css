@@ -575,7 +575,10 @@ body.sidebar-open .topbar{
 /* =====================  HERO  ===================== */
 .hero{
   min-height:calc(100vh - var(--topbar-h));
-  padding:clamp(50px,8vw,90px) clamp(20px,7vw,7vw) clamp(60px,10vw,100px);
+  padding-top: clamp(20px, 6vw, 80px);
+  padding-bottom: clamp(20px, 6vw, 80px);
+  padding-left: clamp(10px, 5vw, 40px);
+  padding-right: clamp(10px, 5vw, 40px);
   position:relative;
   display:flex; align-items:center;
   overflow:hidden;
@@ -635,9 +638,9 @@ body.sidebar-open .topbar{
 }
 
 @media (max-width:600px){
-  .toc-card{ padding:16px; }
+  .toc-card{ padding: clamp(8px, 4vw, 16px) }
   .toc-card strong{ font-size:17px; }
-  .hero__buttons{ flex-direction:column; align-items:stretch; }
+  .hero__buttons{ flex-direction:column; align-items:stretch; gap: clamp(8px, 3vw, 16px);}
   .fieldlist__label{ min-width:120px; font-size:.75rem; }
 }
 
