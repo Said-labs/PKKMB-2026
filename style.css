@@ -24,11 +24,8 @@
   --topbar-h:64px;
   --sidebar-speed:.32s;
 
-  --content-max:1400px;
 
-  --gutter-sm:clamp(18px,6vw,32px);
-  --gutter:clamp(20px,5vw,64px);
-  --gutter-lg:clamp(24px,4vw,96px);
+  --content-max:1400px;
 }
 
 *{ box-sizing:border-box; }
@@ -82,7 +79,7 @@ body.sidebar-open .book{
   min-height:100vh;
   width:100%;
   max-width:100%;
-  padding:clamp(28px,4vw,60px) var(--gutter);
+  padding:clamp(28px,4vw,60px) clamp(20px,5vw,64px);
   display:flex;
   flex-direction:column;
   justify-content:center;
@@ -294,7 +291,7 @@ body.sidebar-open .topbar{
 
 /* =====================  DAFTAR ISI  ===================== */
 .toc-section{
-  padding:100px var(--gutter);
+  padding:100px clamp(20px,7vw,90px);
   background:var(--red-600);
   color:var(--ink);
 }
@@ -597,8 +594,8 @@ body.sidebar-open .topbar{
   min-height:calc(100vh - var(--topbar-h));
   padding-top: clamp(20px, 6vw, 80px);
   padding-bottom: clamp(20px, 6vw, 80px);
-  padding-left: var(--gutter);
-  padding-right: var(--gutter);
+  padding-left: clamp(10px, 5vw, 40px);
+  padding-right: clamp(10px, 5vw, 40px);
   position:relative;
   display:flex; align-items:center;
   
@@ -652,7 +649,7 @@ body.sidebar-open .topbar{
 
 .hero__actions{
   display:flex;
-  gap: clamp(10px, 4vw, 16px);
+ gap: clamp(8px, 4vw, 16px); 
   flex-wrap:wrap;
   align-items:center;
   margin-top:30px;
@@ -664,7 +661,6 @@ body.sidebar-open .topbar{
   cursor:pointer; text-decoration:none;
   transition:transform .25s ease, box-shadow .25s ease, background .25s ease;
   white-space:nowrap;
-  margin:0;
 }
 .btn:hover{ transform:translateY(-3px); }
 
@@ -684,18 +680,17 @@ body.sidebar-open .topbar{
 }
 
 @media (max-width:480px){
-  .page,.hero,.toc-section{ padding-left:var(--gutter-sm); padding-right:var(--gutter-sm); }
   .hero__actions{
     flex-direction:column;
     align-items:stretch;
-    gap: 14px;
+     gap: clamp(8px, 4vw, 16px); 
     width:100%;
   }
   .hero__actions .btn,
   .hero__actions .btn-download,
   .hero__actions .btn--red{
     width:100%;
-    margin:0 !important;
+    margin-left:0 !important; 
   }
 }
 
@@ -703,20 +698,12 @@ body.sidebar-open .topbar{
 @media (max-width:280px){
   body.sidebar-open .book{ margin-left:0; width:100%; }
   .sidebar{ width:100%; max-width:100%; }
-  .page,.hero,.toc-section{ padding-left:16px; padding-right:16px; }
 }
 
 
 @media (min-width:1600px){
-  .toc-grid{ max-width:var(--content-max); grid-template-columns:repeat(3,minmax(0,1fr)); }
+  .toc-grid{ max-width:var(--content-max); }
   .hero__content{ max-width:1100px; }
-  .page,.hero,.toc-section{ padding-left:var(--gutter-lg); padding-right:var(--gutter-lg); }
-}
-
-@media (min-width:2200px){
-  .toc-grid{ max-width:1700px; grid-template-columns:repeat(4,minmax(0,1fr)); }
-  .hero__content{ max-width:1300px; }
-  .page,.hero,.toc-section{ padding-left:clamp(64px,6vw,140px); padding-right:clamp(64px,6vw,140px); }
 }
 
 /* =====================  PRINT ===================== */
@@ -787,7 +774,6 @@ body.sidebar-open .topbar{
     font-size: 15px;
     font-weight: 700;
     white-space:nowrap;
-    margin:0;
 
 
        box-shadow: 0 8px 25px rgba(217, 119, 6, .22);
@@ -843,7 +829,6 @@ color: #9A3412;
     font-size: 15px;
     font-weight: 700;
     white-space:nowrap;
-    margin:0;
 
     border: 1px solid rgba(255,255,255,0.08);
 
