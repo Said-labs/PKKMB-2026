@@ -51,6 +51,8 @@ const ITEMS = [
     title: "TWIBON VIDEO PKKMB 2026",
     description: "TWIBON BERBENTUK VIDEO",
     tags: ["TWIBON", "PKKMB2026", "TELKOM UNIVERSITY", " INFORATIKA"],
+     link: "https://www.instagram.com/p/DchAckUk9k4/?utm_source=ig_web_copy_link&igsi=MzRlODBiNWFlZA==",   
+  linkLabel: "LINK  Video TWIBON",
     location: null,
     audio: null,
   },
