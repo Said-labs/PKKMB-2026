@@ -683,7 +683,7 @@ body.sidebar-open .topbar{
   .hero__actions{
     flex-direction:column;
     align-items:stretch;
-    gap:12px;
+     gap: clamp(8px, 4vw, 16px); 
     width:100%;
   }
   .hero__actions .btn,
