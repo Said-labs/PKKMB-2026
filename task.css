@@ -345,12 +345,21 @@ body{
   
 }
 .lb-frame:active{ cursor:grabbing; }
-.lb-frame img, .lb-frame video, {
+ .lb-frame video, {
   max-width:100%; max-height: 65vh;
   border:0; border-radius: 8px;
   transition: filter .15s;
 
 }
+
+.lb-frame img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 65vh;
+  object-fit: contain;
+}
+
 
 .lb-frame iframe{
   width:100%;
