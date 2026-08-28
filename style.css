@@ -31,7 +31,7 @@
 html{ scroll-behavior:smooth; }
 
 body{
-  margin:0;
+ 
   font-family:'Plus Jakarta Sans', sans-serif;
   color:var(--cream-50);
   background:
@@ -280,7 +280,7 @@ body.sidebar-open .topbar{
 }
 .toc-heading{
   max-width:700px;
-  margin:0 auto 45px;
+  margin: 0  auto 45px;
   text-align:center;
 }
 .toc-heading .eyebrow{ color:var(--red-600); }
@@ -650,7 +650,7 @@ body.sidebar-open .topbar{
 @media print{
   .sidebar,.topbar,.menu-popup{ display:none !important; }
   .book{ margin:0 !important; padding-top:0 !important; }
-  body{ background:#fff !important; color:#000 !important; }
+  body{ background:#fff !important; color:#000 !important; min-height: 100vh }
   .page{ min-height:auto; break-inside:avoid; color:#000; }
 }
 
