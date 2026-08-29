@@ -5,10 +5,7 @@
 <head>
     <meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <meta
         name="description"
@@ -22,8 +19,9 @@
 
     <title>Introduce Myself — Sa'id Abdul Aziz</title>
 
+
     <!-- =========================
-         GOOGLE FONTS
+         GOOGLE FONT
     ========================== -->
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -39,14 +37,16 @@
         rel="stylesheet"
     >
 
+
     <!-- =========================
-         ICON
+         FONT AWESOME
     ========================== -->
 
     <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     >
+
 
     <!-- =========================
          CSS
@@ -56,10 +56,12 @@
         rel="stylesheet"
         href="introduce.css"
     >
+
 </head>
 
 
 <body>
+
 
     <!-- ==================================================
          BACKGROUND
@@ -71,26 +73,23 @@
 
     <div class="ambient ambient-two"></div>
 
-
-    <!-- ==================================================
-         FILM GRAIN
-    =================================================== -->
-
     <div class="film-grain"></div>
 
 
+
     <!-- ==================================================
-         MAIN PAGE
+         MAIN
     =================================================== -->
 
     <main class="intro-page">
 
 
         <!-- ==================================================
-             TOP NAVIGATION
+             TOP BAR
         =================================================== -->
 
         <header class="topbar">
+
 
             <a
                 href="index.html"
@@ -125,18 +124,20 @@
 
             </div>
 
+
         </header>
 
 
 
         <!-- ==================================================
-             HERO INTRODUCTION
+             HERO
         =================================================== -->
 
         <section class="hero">
 
 
             <div class="hero-left">
+
 
                 <div class="eyebrow">
 
@@ -160,10 +161,13 @@
 
                 <div class="hero-bottom">
 
+
                     <p>
+
                         A short visual introduction
                         to the person behind this
                         personal archive.
+
                     </p>
 
 
@@ -177,17 +181,20 @@
 
                     </div>
 
+
                 </div>
+
 
             </div>
 
 
 
             <!-- ==================================================
-                 DOCUMENT INFORMATION
+                 DOCUMENT CARD
             =================================================== -->
 
             <div class="hero-right">
+
 
                 <div class="document-card">
 
@@ -233,7 +240,9 @@
 
                 </div>
 
+
             </div>
+
 
         </section>
 
@@ -246,9 +255,10 @@
         <section class="video-section">
 
 
-            <!-- Video Header -->
+            <!-- VIDEO HEADER -->
 
             <div class="video-header">
+
 
                 <div>
 
@@ -267,6 +277,7 @@
                     SA-INTRO-2026
                 </div>
 
+
             </div>
 
 
@@ -278,7 +289,7 @@
             <div class="video-frame">
 
 
-                <!-- Decorative frame -->
+                <!-- Decorative Lines -->
 
                 <div class="frame-line frame-top"></div>
 
@@ -289,7 +300,8 @@
                 <div class="frame-line frame-left"></div>
 
 
-                <!-- Corner -->
+
+                <!-- Corners -->
 
                 <span class="corner corner-tl"></span>
 
@@ -301,7 +313,7 @@
 
 
 
-                <!-- Video Information -->
+                <!-- Video Overlay -->
 
                 <div class="video-overlay overlay-top-left">
 
@@ -336,6 +348,9 @@
 
                 <!-- ==================================================
                      GOOGLE DRIVE VIDEO
+
+                     GANTI DRIVE_FILE_ID
+                     DENGAN ID VIDEO GOOGLE DRIVE KAMU
                 =================================================== -->
 
                 <iframe
@@ -354,7 +369,7 @@
 
 
             <!-- ==================================================
-                 VIDEO INFO
+                 VIDEO INFORMATION
             =================================================== -->
 
             <div class="video-info">
@@ -414,37 +429,38 @@
 
             </div>
 
+
         </section>
 
 
 
         <!-- ==================================================
-             ABOUT THE VIDEO
+             ABOUT VIDEO
         =================================================== -->
 
         <section class="about-video">
 
 
             <div class="about-number">
-
                 02
-
             </div>
 
 
             <div class="about-content">
 
+
                 <div class="about-label">
-
                     A LITTLE ABOUT ME
-
                 </div>
 
 
                 <h2>
 
                     BEHIND
-                    <span>THE VIDEO.</span>
+
+                    <span>
+                        THE VIDEO.
+                    </span>
 
                 </h2>
 
@@ -474,15 +490,22 @@
 
             <div class="about-side">
 
+
                 <div class="quote-mark">
                     “
                 </div>
 
+
                 <p>
+
                     Still learning.<br>
+
                     Still building.<br>
+
                     Still becoming.
+
                 </p>
+
 
             </div>
 
@@ -492,7 +515,7 @@
 
 
         <!-- ==================================================
-             PERSONAL DATA
+             PROFILE
         =================================================== -->
 
         <section class="profile-strip">
@@ -555,7 +578,7 @@
 
 
         <!-- ==================================================
-             FINAL MESSAGE
+             FINAL
         =================================================== -->
 
         <section class="final-section">
@@ -570,8 +593,13 @@
 
 
             <h2>
+
                 THANKS FOR
-                <span>WATCHING.</span>
+
+                <span>
+                    WATCHING.
+                </span>
+
             </h2>
 
 
@@ -607,17 +635,21 @@
 
         <footer class="footer">
 
+
             <span>
                 SA'ID ABDUL AZIZ
             </span>
+
 
             <span>
                 PERSONAL ARCHIVE · 2026
             </span>
 
+
             <span>
                 TELKOM UNIVERSITY · INFORMATICS
             </span>
+
 
         </footer>
 
@@ -627,48 +659,11 @@
 
 
     <!-- ==================================================
-         SCRIPT
+         JAVASCRIPT
     =================================================== -->
 
-    <script>
+    <script src="introduce.js"></script>
 
-        /*
-         * Simple scroll reveal
-         */
-
-        const elements = document.querySelectorAll(
-            ".video-section, .about-video, .profile-strip, .final-section"
-        );
-
-
-        const observer = new IntersectionObserver(
-            (entries) => {
-
-                entries.forEach((entry) => {
-
-                    if (entry.isIntersecting) {
-
-                        entry.target.classList.add("show");
-
-                    }
-
-                });
-
-            },
-            {
-                threshold: 0.12
-            }
-        );
-
-
-        elements.forEach((element) => {
-
-            observer.observe(element);
-
-        });
-
-
-    </script>
 
 </body>
 
