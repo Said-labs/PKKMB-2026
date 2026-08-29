@@ -1,0 +1,429 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    padding: 50px 20px;
+
+    background:
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,.08), transparent 20%),
+        radial-gradient(circle at 80% 70%, rgba(0,0,0,.12), transparent 25%),
+        #262522;
+
+    color: #29251e;
+
+    font-family: "Courier Prime", monospace;
+}
+
+
+/* =========================
+   PAPER
+========================= */
+
+.document {
+
+    width: min(900px, 100%);
+
+    margin: auto;
+
+    padding: 65px 75px;
+
+    position: relative;
+
+    background:
+        linear-gradient(
+            rgba(255,255,255,.15),
+            rgba(255,255,255,.15)
+        ),
+        #e7dfc9;
+
+    box-shadow:
+        0 25px 60px rgba(0,0,0,.45),
+        0 4px 12px rgba(0,0,0,.25);
+
+    transform: rotate(-0.15deg);
+
+    overflow: hidden;
+}
+
+
+/* paper texture */
+
+.document::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    opacity: .25;
+
+    background-image:
+        radial-gradient(#8d816d 0.5px, transparent 0.5px);
+
+    background-size: 5px 5px;
+
+    mix-blend-mode: multiply;
+}
+
+
+/* paper edge */
+
+.document::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    box-shadow:
+        inset 0 0 80px rgba(90,70,40,.12);
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.document-header {
+    position: relative;
+    z-index: 2;
+}
+
+.top-line {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    font-size: 11px;
+
+    letter-spacing: 1px;
+
+    margin-bottom: 30px;
+
+    color: #5c5548;
+}
+
+
+.classified {
+
+    display: inline-block;
+
+    padding: 8px 18px;
+
+    border: 3px solid #a32929;
+
+    color: #a32929;
+
+    font-family: "Special Elite", cursive;
+
+    font-size: 18px;
+
+    font-weight: bold;
+
+    letter-spacing: 3px;
+
+    transform: rotate(-4deg);
+
+    margin-bottom: 25px;
+}
+
+
+h1 {
+
+    font-family: "Special Elite", cursive;
+
+    font-size: clamp(38px, 7vw, 70px);
+
+    line-height: .9;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 15px;
+}
+
+
+.subtitle {
+
+    font-family: "Special Elite", cursive;
+
+    font-size: 16px;
+
+    letter-spacing: 3px;
+
+    color: #6b6254;
+}
+
+
+.divider {
+
+    height: 2px;
+
+    background: #29251e;
+
+    margin: 30px 0;
+}
+
+
+.document-info {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 8px 30px;
+
+    font-size: 11px;
+
+    letter-spacing: .5px;
+
+    color: #625b4e;
+}
+
+
+/* =========================
+   SECTION
+========================= */
+
+.section {
+
+    position: relative;
+
+    z-index: 2;
+
+    display: grid;
+
+    grid-template-columns: 55px 1fr;
+
+    gap: 20px;
+
+    margin-top: 45px;
+
+    padding-bottom: 35px;
+
+    border-bottom: 1px dashed rgba(41,37,30,.35);
+}
+
+
+.section-number {
+
+    font-family: "Special Elite", cursive;
+
+    font-size: 20px;
+
+    color: #a32929;
+
+    padding-top: 2px;
+}
+
+
+.section-content h2 {
+
+    font-family: "Special Elite", cursive;
+
+    font-size: 22px;
+
+    letter-spacing: 1px;
+
+    margin-bottom: 15px;
+}
+
+
+.section-content p {
+
+    font-size: 14px;
+
+    line-height: 1.8;
+
+    margin-bottom: 13px;
+
+    color: #383329;
+}
+
+
+.section-content ul {
+
+    margin-top: 15px;
+
+    padding-left: 22px;
+}
+
+
+.section-content li {
+
+    font-size: 13px;
+
+    line-height: 1.8;
+
+    margin-bottom: 8px;
+
+    color: #383329;
+}
+
+
+.section-content li::marker {
+
+    color: #a32929;
+}
+
+
+/* =========================
+   APPROVAL
+========================= */
+
+.approval {
+
+    position: relative;
+
+    z-index: 2;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-top: 55px;
+
+    padding: 30px 0;
+}
+
+
+.stamp {
+
+    font-family: "Special Elite", cursive;
+
+    font-size: 24px;
+
+    color: #a32929;
+
+    border: 4px solid #a32929;
+
+    padding: 12px 20px;
+
+    transform: rotate(-8deg);
+
+    opacity: .8;
+}
+
+
+.signature {
+
+    text-align: center;
+
+    font-size: 10px;
+
+    color: #625b4e;
+}
+
+
+.signature-line {
+
+    width: 200px;
+
+    height: 1px;
+
+    background: #29251e;
+
+    margin: 28px auto 8px;
+}
+
+
+.signature span {
+
+    font-family: "Special Elite", cursive;
+
+    font-size: 11px;
+
+    letter-spacing: 1px;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+
+    position: relative;
+
+    z-index: 2;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    border-top: 2px solid #29251e;
+
+    padding-top: 15px;
+
+    margin-top: 20px;
+
+    font-size: 9px;
+
+    letter-spacing: 1px;
+
+    color: #625b4e;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 700px) {
+
+    body {
+        padding: 20px 10px;
+    }
+
+    .document {
+        padding: 40px 30px;
+    }
+
+    .document-info {
+        grid-template-columns: 1fr;
+    }
+
+    .section {
+        grid-template-columns: 40px 1fr;
+        gap: 12px;
+    }
+
+    .section-number {
+        font-size: 16px;
+    }
+
+    .section-content h2 {
+        font-size: 18px;
+    }
+
+    .section-content p,
+    .section-content li {
+        font-size: 12px;
+    }
+
+    .approval {
+        flex-direction: column;
+        gap: 45px;
+        align-items: flex-start;
+    }
+
+    footer {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+}
