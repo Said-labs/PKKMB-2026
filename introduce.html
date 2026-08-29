@@ -1,0 +1,253 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Introduce Myself — Sa'id Abdul Aziz</title>
+
+    <link rel="stylesheet" href="introduce.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Special+Elite&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Film Grain -->
+    <div class="film-grain"></div>
+
+    <!-- Background -->
+    <div class="background"></div>
+
+
+    <main class="intro-page">
+
+        <!-- =========================
+             TOP BAR
+        ========================== -->
+
+        <header class="topbar">
+
+            <a href="index.html" class="brand">
+                SA'ID AZIZ
+            </a>
+
+            <div class="top-info">
+                <span>PERSONAL ARCHIVE</span>
+                <span>FILE 01 / 01</span>
+            </div>
+
+        </header>
+
+
+        <!-- =========================
+             MAIN CONTENT
+        ========================== -->
+
+        <section class="intro-content">
+
+            <div class="heading">
+
+                <div class="eyebrow">
+                    PERSONAL DOCUMENT · VIDEO
+                </div>
+
+                <h1>
+                    INTRODUCE
+                    <span>MYSELF.</span>
+                </h1>
+
+                <p>
+                    A short visual introduction to who I am,
+                    what I enjoy, and the journey I'm beginning.
+                </p>
+
+            </div>
+
+
+            <!-- =========================
+                 VIDEO
+            ========================== -->
+
+            <div class="video-wrapper">
+
+                <div class="video-meta top-left">
+                    REC · 2026
+                </div>
+
+                <div class="video-meta top-right">
+                    SA / INTRO
+                </div>
+
+
+                <video
+                    id="introVideo"
+                    class="intro-video"
+                    controls
+                    playsinline
+                    preload="metadata"
+                    poster="foto2.png"
+                >
+                    <source src="introduce.mp4" type="video/mp4">
+
+                    Browser kamu tidak mendukung
+                    pemutaran video.
+                </video>
+
+
+                <!-- Decorative Corners -->
+
+                <span class="corner corner-tl"></span>
+                <span class="corner corner-tr"></span>
+                <span class="corner corner-bl"></span>
+                <span class="corner corner-br"></span>
+
+
+                <div class="video-index">
+                    01
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 VIDEO INFORMATION
+            ========================== -->
+
+            <div class="video-info">
+
+                <div class="info-block">
+
+                    <span class="info-label">
+                        TITLE
+                    </span>
+
+                    <strong>
+                        INTRODUCE MYSELF
+                    </strong>
+
+                </div>
+
+
+                <div class="info-block">
+
+                    <span class="info-label">
+                        SUBJECT
+                    </span>
+
+                    <strong>
+                        SA'ID ABDUL AZIZ
+                    </strong>
+
+                </div>
+
+
+                <div class="info-block">
+
+                    <span class="info-label">
+                        FIELD
+                    </span>
+
+                    <strong>
+                        INFORMATICS
+                    </strong>
+
+                </div>
+
+
+                <div class="info-block">
+
+                    <span class="info-label">
+                        YEAR
+                    </span>
+
+                    <strong>
+                        2026
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 DESCRIPTION
+            ========================== -->
+
+            <div class="description">
+
+                <span class="description-number">
+                    01
+                </span>
+
+                <div>
+
+                    <h2>
+                        A LITTLE ABOUT ME
+                    </h2>
+
+                    <p>
+                        Hi, I'm Sa'id Abdul Aziz.
+                        This video is a small introduction
+                        about myself and the person behind
+                        this personal archive.
+                    </p>
+
+                    <p>
+                        Welcome to my digital space.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 BOTTOM NAV
+            ========================== -->
+
+            <div class="bottom-nav">
+
+                <a href="index.html">
+                    ← BACK TO ARCHIVE
+                </a>
+
+                <span>
+                    PKKMB 2026 · TELKOM UNIVERSITY
+                </span>
+
+                <span>
+                    INFORMATICS
+                </span>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         VIDEO SCRIPT
+    ========================== -->
+
+    <script>
+
+        const video = document.getElementById("introVideo");
+
+        /*
+         * Prevent video from automatically
+         * playing with sound.
+         */
+
+        video.volume = 0.8;
+
+    </script>
+
+</body>
+</html>
+```
