@@ -277,30 +277,61 @@
   </section>
 
   <!-- ===== BAB 05 — PENGALAMAN (TIMELINE) ===== -->
-  <section class="page" id="pengalaman">
-    <p class="eyebrow">Bab 05</p>
-    <h2 class="pagetitle">Experience</h2>
-
-    <div class="timeline">
-      <div class="timeline__item">
-        <span class="timeline__year">2025</span>
-        <div class="timeline__img" style="background-image:url('https://drive.google.com/uc?export=view&id=1WeLte4PrbbHs6kuQgLPha2KqszHooFdf
-')"></div>
-        <p class="timeline__label">Dekorasi Mapetra</p>
-      </div>
-      <div class="timeline__item">
-        <span class="timeline__year">2023</span>
-        <div class="timeline__img" style="background-image:url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=600&auto=format&fit=crop')"></div>
-        <p class="timeline__label">Peserta OSN</p>
-      </div>
-      <div class="timeline__item">
-        <span class="timeline__year">2025</span>
-        <div class="timeline__img" style="background-image:url('https://images.unsplash.com/photo-1518614368389-6d3d4a5a6df4?q=80&w=600&auto=format&fit=crop')"></div>
-        <p class="timeline__label">Panitia Class Meeting</p>
-      </div>
-    </div>
-  </section>
-
+<section class="page" id="pengalaman">
+ 
+  <p class="eyebrow">Bab 05</p>
+  <h2 class="pagetitle">Experience</h2>
+ 
+  <ol class="timeline">
+ 
+    <li class="timeline__item">
+      <span class="timeline__year">2025</span>
+ 
+      <button type="button" class="timeline__photo" data-full="https://drive.google.com/thumbnail?id=1WeLte4PrbbHs6kuQgLPha2KqszHooFdf&sz=w1600">
+        <img
+          src="https://drive.google.com/thumbnail?id=1WeLte4PrbbHs6kuQgLPha2KqszHooFdf&sz=w600"
+          alt="Dekorasi Mapetra"
+          loading="lazy">
+      </button>
+ 
+      <p class="timeline__label">Dekorasi Mapetra</p>
+    </li>
+ 
+    <li class="timeline__item">
+      <span class="timeline__year">2023</span>
+ 
+      <button type="button" class="timeline__photo" data-full="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=1600&auto=format&fit=crop">
+        <img
+          src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=600&auto=format&fit=crop"
+          alt="Peserta OSN"
+          loading="lazy">
+      </button>
+ 
+      <p class="timeline__label">Peserta OSN</p>
+    </li>
+ 
+    <li class="timeline__item">
+      <span class="timeline__year">2025</span>
+ 
+      <button type="button" class="timeline__photo" data-full="https://images.unsplash.com/photo-1518614368389-6d3d4a5a6df4?q=80&w=1600&auto=format&fit=crop">
+        <img
+          src="https://images.unsplash.com/photo-1518614368389-6d3d4a5a6df4?q=80&w=600&auto=format&fit=crop"
+          alt="Panitia Class Meeting"
+          loading="lazy">
+      </button>
+ 
+      <p class="timeline__label">Panitia Class Meeting</p>
+    </li>
+ 
+  </ol>
+ 
+</section>
+ 
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <button type="button" class="lightbox__close" id="lightboxClose" aria-label="Tutup foto">&times;</button>
+  <img class="lightbox__img" id="lightboxImg" src="" alt="">
+</div>
   <!-- ===== BAB 06 — SWOT (FLIP CARD) ===== -->
   <!-- Klik kartu untuk membalik dan melihat isinya — ini satu-satunya
        interaksi yang tersisa untuk pengunjung, isinya tetap statis. -->
