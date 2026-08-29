@@ -1,168 +1,27 @@
+/* =========================================================
+   FADE-IN HALUS SAAT HALAMAN DIBUKA
+========================================================= */
+document.addEventListener("DOMContentLoaded", () => {
+  const content = document.querySelector(".content");
+  if (content) {
+    content.style.opacity = "0";
+    content.style.transform = "translateY(10px)";
+    content.style.transition = "opacity 500ms ease, transform 500ms ease";
+    requestAnimationFrame(() => {
+      content.style.opacity = "1";
+      content.style.transform = "translateY(0)";
+    });
+  }
 
-
-/* ==================================================
-   SCROLL REVEAL
-================================================== */
-
-const revealElements = document.querySelectorAll(
-    ".video-section, .about-video, .profile-strip, .final-section"
-);
-
-
-const revealObserver = new IntersectionObserver(
-    (entries) => {
-
-        entries.forEach((entry) => {
-
-            if (entry.isIntersecting) {
-
-                entry.target.classList.add("show");
-
-                revealObserver.unobserve(entry.target);
-
-            }
-
-        });
-
-    },
-    {
-        threshold: 0.12
-    }
-);
-
-
-revealElements.forEach((element) => {
-
-    revealObserver.observe(element);
-
+  // foto "diambil" jadi lurus pas disentuh/hover
+  const photo = document.querySelector(".photo");
+  if (photo) {
+    photo.addEventListener("mouseenter", () => {
+      photo.style.transition = "transform 300ms ease";
+      photo.style.transform = "rotate(0deg)";
+    });
+    photo.addEventListener("mouseleave", () => {
+      photo.style.transform = "rotate(-1.1deg)";
+    });
+  }
 });
-
-
-
-/* ==================================================
-   SMOOTH SCROLL
-================================================== */
-
-const scrollIndicator =
-    document.querySelector(".scroll-indicator");
-
-
-if (scrollIndicator) {
-
-    scrollIndicator.addEventListener("click", () => {
-
-        const videoSection =
-            document.querySelector(".video-section");
-
-
-        if (videoSection) {
-
-            videoSection.scrollIntoView({
-                behavior: "smooth"
-            });
-
-        }
-
-    });
-
-}
-
-
-
-/* ==================================================
-   DOCUMENT CARD PARALLAX
-================================================== */
-
-const documentCard =
-    document.querySelector(".document-card");
-
-
-if (documentCard && window.innerWidth > 900) {
-
-    document.addEventListener("mousemove", (event) => {
-
-        const x =
-            (window.innerWidth / 2 - event.clientX) / 70;
-
-        const y =
-            (window.innerHeight / 2 - event.clientY) / 70;
-
-
-        documentCard.style.transform =
-            `rotate(2deg) translate(${x}px, ${y}px)`;
-
-    });
-
-}
-
-
-
-/* ==================================================
-   VIDEO FRAME HOVER
-================================================== */
-
-const videoFrame =
-    document.querySelector(".video-frame");
-
-
-if (videoFrame) {
-
-    videoFrame.addEventListener("mouseenter", () => {
-
-        videoFrame.classList.add("video-hover");
-
-    });
-
-
-    videoFrame.addEventListener("mouseleave", () => {
-
-        videoFrame.classList.remove("video-hover");
-
-    });
-
-}
-
-
-
-/* ==================================================
-   CURRENT YEAR
-================================================== */
-
-const footerYear =
-    document.querySelector(".footer");
-
-
-if (footerYear) {
-
-
-
-}
-
-
-
-/* ==================================================
-   DISABLE RIGHT CLICK
-   OPTIONAL
-================================================== */
-
-/*
-document.addEventListener("contextmenu", (event) => {
-
-    event.preventDefault();
-
-});
-*/
-
-
-/* ==================================================
-   CONSOLE MESSAGE
-================================================== */
-
-console.log(
-    "%cSA'ID AZIZ — PERSONAL ARCHIVE",
-    "font-size: 16px; font-weight: bold;"
-);
-
-console.log(
-    "Introduce Myself · 2026"
-);
