@@ -1,250 +1,78 @@
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kenalan Sama Aku — Sa'id Abdul Aziz</title>
 
-    <title>Introduce Myself — Sa'id Abdul Aziz</title>
+<link rel="stylesheet" href="introduce.css">
 
-    <link rel="stylesheet" href="introduce.css">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Special+Elite&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 </head>
-
 <body>
 
-    <!-- Film Grain -->
-    <div class="film-grain"></div>
-
-    <!-- Background -->
-    <div class="background"></div>
-
-
-    <main class="intro-page">
-
-        <!-- =========================
-             TOP BAR
-        ========================== -->
-
-        <header class="topbar">
-
-            <a href="index.html" class="brand">
-                SA'ID AZIZ
-            </a>
-
-            <div class="top-info">
-                <span>PERSONAL ARCHIVE</span>
-                <span>FILE 01 / 01</span>
-            </div>
-
-        </header>
-
-
-        <!-- =========================
-             MAIN CONTENT
-        ========================== -->
-
-        <section class="intro-content">
-
-            <div class="heading">
-
-                <div class="eyebrow">
-                    PERSONAL DOCUMENT · VIDEO
-                </div>
-
-                <h1>
-                    INTRODUCE
-                    <span>MYSELF.</span>
-                </h1>
-
-                <p>
-                    A short visual introduction to who I am,
-                    what I enjoy, and the journey I'm beginning.
-                </p>
-
-            </div>
-
-
-            <!-- =========================
-                 VIDEO
-            ========================== -->
-
-            <div class="video-wrapper">
-
-                <div class="video-meta top-left">
-                    REC · 2026
-                </div>
-
-                <div class="video-meta top-right">
-                    SA / INTRO
-                </div>
-
-
-                <video
-                    id="introVideo"
-                    class="intro-video"
-                    controls
-                    playsinline
-                    preload="metadata"
-                    poster="foto2.png"
-                >
-                    <source src="https://drive.google.com/file/d/1ftbU-QdzOU4WYR2ARYBv7UYAQjeOTc58/view?usp=sharing" type="video/mp4">
-
-                    Browser kamu tidak mendukung
-                    pemutaran video.
-                </video>
-
-
-                <!-- Decorative Corners -->
-
-                <span class="corner corner-tl"></span>
-                <span class="corner corner-tr"></span>
-                <span class="corner corner-bl"></span>
-                <span class="corner corner-br"></span>
-
-
-                <div class="video-index">
-                    01
-                </div>
-
-            </div>
-
-
-            <!-- =========================
-                 VIDEO INFORMATION
-            ========================== -->
-
-            <div class="video-info">
-
-                <div class="info-block">
-
-                    <span class="info-label">
-                        TITLE
-                    </span>
-
-                    <strong>
-                        INTRODUCE MYSELF
-                    </strong>
-
-                </div>
-
-
-                <div class="info-block">
-
-                    <span class="info-label">
-                        SUBJECT
-                    </span>
-
-                    <strong>
-                        SA'ID ABDUL AZIZ
-                    </strong>
-
-                </div>
-
-
-                <div class="info-block">
-
-                    <span class="info-label">
-                        FIELD
-                    </span>
-
-                    <strong>
-                        INFORMATICS
-                    </strong>
-
-                </div>
-
-
-                <div class="info-block">
-
-                    <span class="info-label">
-                        YEAR
-                    </span>
-
-                    <strong>
-                        2026
-                    </strong>
-
-                </div>
-
-            </div>
-
-
-            <!-- =========================
-                 DESCRIPTION
-            ========================== -->
-
-            <div class="description">
-
-                <span class="description-number">
-                    01
-                </span>
-
-                <div>
-
-                    <h2>
-                        A LITTLE ABOUT ME
-                    </h2>
-
-                    <p>
-                        Hi, I'm Sa'id Abdul Aziz.
-                        This video is a small introduction
-                        about myself and the person behind
-                        this personal archive.
-                    </p>
-
-                    <p>
-                        Welcome to my digital space.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <!-- =========================
-                 BOTTOM NAV
-            ========================== -->
-
-            <div class="bottom-nav">
-
-                <a href="index.html">
-                    ← BACK TO ARCHIVE
-                </a>
-
-                <span>
-                    PKKMB 2026 · TELKOM UNIVERSITY
-                </span>
-
-                <span>
-                    INFORMATICS
-                </span>
-
-            </div>
-
-        </section>
-
-    </main>
-
-
-    <!-- =========================
-         VIDEO SCRIPT
-    ========================== -->
-
-    <script>
-
-        const video = document.getElementById("introVideo");
-
-     
-
-        video.volume = 0.8;
-
-    </script>
-
+  <main class="page">
+
+    <header class="topbar">
+      <a href="index.html" class="tab-link">← kembali</a>
+      <span class="stamp">PKKMB 2026</span>
+    </header>
+
+    <section class="content">
+
+      <div class="title-block">
+        <p class="kicker">video perkenalan diri</p>
+        <h1>Halo, aku Sa'id.</h1>
+        <p class="lede">Ini video singkat buat kenalan — sedikit cerita soal aku, apa yang lagi aku jalani, dan apa yang bakal aku bawa selama PKKMB 2026.</p>
+      </div>
+
+      <figure class="photo">
+        <span class="tape tape-left"></span>
+        <span class="tape tape-right"></span>
+
+        <div class="frame">
+          <iframe
+            class="video"
+            src="https://drive.google.com/file/d/1ftbU-QdzOU4WYR2ARYBv7UYAQjeOTc58/preview"
+            allow="autoplay"
+            allowfullscreen
+            loading="lazy">
+          </iframe>
+        </div>
+
+        <figcaption>klik play buat nonton ya</figcaption>
+      </figure>
+
+      <ul class="tags">
+        <li><span>nama</span>Sa'id Abdul Aziz</li>
+        <li><span>prodi</span>Informatika</li>
+        <li><span>kampus</span>Telkom University</li>
+        <li><span>tahun</span>2026</li>
+      </ul>
+
+      <div class="note">
+        <span class="badge" aria-hidden="true">
+          <svg viewBox="0 0 120 120">
+            <path d="M60 8 C90 8 110 30 110 60 C110 92 88 112 58 111 C28 110 9 90 10 59 C11 29 32 8 60 8 Z" />
+            <text x="60" y="55" text-anchor="middle">SA'ID</text>
+            <text x="60" y="75" text-anchor="middle">2026</text>
+          </svg>
+        </span>
+
+        <h2>Sedikit tentang aku</h2>
+        <p>Aku anak Informatika yang penasaran sama gimana sesuatu bekerja di balik layar — dari kode sampai hal-hal kecil yang orang jarang perhatiin. <mark>PKKMB ini jadi awal buat aku belajar banyak hal baru</mark>, dan aku senang bisa mulai dari sini.</p>
+        <p>Makasih udah mampir ke halaman ini. Semoga video singkatnya cukup buat kenalan awal ya!</p>
+      </div>
+
+      <footer class="footer">
+        <a href="index.html">← balik ke halaman arsip</a>
+      </footer>
+
+    </section>
+  </main>
+
+  <script src="introduce.js"></script>
 </body>
 </html>
-
