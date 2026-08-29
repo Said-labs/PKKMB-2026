@@ -1,1 +1,759 @@
+```css
+/* =========================================
+   SA'ID AZIZ
+   INTRODUCE MYSELF
+   CINEMATIC PERSONAL ARCHIVE
+========================================= */
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+:root {
+
+    --black: #11110f;
+    --black-soft: #181815;
+
+    --paper: #e9e1ce;
+
+    --red: #a52d2d;
+
+    --gray: #969083;
+
+    --line: rgba(233,225,206,.22);
+
+}
+
+
+/* =========================================
+   BODY
+========================================= */
+
+body {
+
+    min-height: 100vh;
+
+    background: var(--black);
+
+    color: var(--paper);
+
+    font-family: "Courier Prime", monospace;
+
+    overflow-x: hidden;
+
+}
+
+
+/* =========================================
+   BACKGROUND
+========================================= */
+
+.background {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: -3;
+
+    background:
+        radial-gradient(
+            circle at 50% 35%,
+            rgba(165,45,45,.09),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 20% 80%,
+            rgba(255,255,255,.035),
+            transparent 30%
+        ),
+        #11110f;
+
+}
+
+
+/* =========================================
+   FILM GRAIN
+========================================= */
+
+.film-grain {
+
+    position: fixed;
+
+    inset: -50%;
+
+    z-index: 50;
+
+    pointer-events: none;
+
+    opacity: .075;
+
+    background-image:
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+
+    animation: grain .18s steps(2) infinite;
+
+}
+
+
+@keyframes grain {
+
+    0% {
+        transform: translate(0,0);
+    }
+
+    25% {
+        transform: translate(2%,-1%);
+    }
+
+    50% {
+        transform: translate(-1%,2%);
+    }
+
+    75% {
+        transform: translate(1%,1%);
+    }
+
+    100% {
+        transform: translate(-2%,-1%);
+    }
+
+}
+
+
+/* =========================================
+   MAIN
+========================================= */
+
+.intro-page {
+
+    width: min(1250px, 100%);
+
+    min-height: 100vh;
+
+    margin: auto;
+
+    padding: 35px 55px 40px;
+
+}
+
+
+/* =========================================
+   TOP BAR
+========================================= */
+
+.topbar {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding-bottom: 18px;
+
+    border-bottom: 1px solid var(--line);
+
+}
+
+
+.brand {
+
+    color: var(--paper);
+
+    text-decoration: none;
+
+    font-family: "Special Elite", cursive;
+
+    font-size: 17px;
+
+    letter-spacing: 3px;
+
+}
+
+
+.top-info {
+
+    display: flex;
+
+    gap: 35px;
+
+    color: var(--gray);
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+}
+
+
+/* =========================================
+   CONTENT
+========================================= */
+
+.intro-content {
+
+    padding-top: 55px;
+
+}
+
+
+/* =========================================
+   HEADING
+========================================= */
+
+.heading {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    align-items: end;
+
+    gap: 40px;
+
+    margin-bottom: 35px;
+
+}
+
+
+.eyebrow {
+
+    grid-column: 1 / -1;
+
+    color: var(--red);
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    font-weight: bold;
+
+}
+
+
+.heading h1 {
+
+    font-family: "Special Elite", cursive;
+
+    font-size: clamp(55px, 8vw, 100px);
+
+    line-height: .82;
+
+    letter-spacing: 3px;
+
+}
+
+
+.heading h1 span {
+
+    display: block;
+
+    color: var(--red);
+
+}
+
+
+.heading p {
+
+    max-width: 390px;
+
+    justify-self: end;
+
+    color: #b5ae9f;
+
+    font-size: 12px;
+
+    line-height: 1.9;
+
+}
+
+
+/* =========================================
+   VIDEO
+========================================= */
+
+.video-wrapper {
+
+    position: relative;
+
+    width: 100%;
+
+    background: #080807;
+
+    padding: 10px;
+
+    border: 1px solid rgba(233,225,206,.16);
+
+    box-shadow:
+        0 30px 70px rgba(0,0,0,.45);
+
+}
+
+
+/* video */
+
+.intro-video {
+
+    display: block;
+
+    width: 100%;
+
+    aspect-ratio: 16 / 9;
+
+    object-fit: cover;
+
+    background: #050504;
+
+}
+
+
+/* =========================================
+   VIDEO CORNERS
+========================================= */
+
+.corner {
+
+    position: absolute;
+
+    width: 25px;
+
+    height: 25px;
+
+    z-index: 5;
+
+    pointer-events: none;
+
+}
+
+
+.corner-tl {
+
+    top: 4px;
+    left: 4px;
+
+    border-top: 2px solid var(--red);
+    border-left: 2px solid var(--red);
+
+}
+
+
+.corner-tr {
+
+    top: 4px;
+    right: 4px;
+
+    border-top: 2px solid var(--red);
+    border-right: 2px solid var(--red);
+
+}
+
+
+.corner-bl {
+
+    bottom: 4px;
+    left: 4px;
+
+    border-bottom: 2px solid var(--red);
+    border-left: 2px solid var(--red);
+
+}
+
+
+.corner-br {
+
+    bottom: 4px;
+    right: 4px;
+
+    border-bottom: 2px solid var(--red);
+    border-right: 2px solid var(--red);
+
+}
+
+
+/* =========================================
+   VIDEO META
+========================================= */
+
+.video-meta {
+
+    position: absolute;
+
+    top: 25px;
+
+    z-index: 5;
+
+    padding: 5px 8px;
+
+    background: rgba(0,0,0,.7);
+
+    color: var(--paper);
+
+    font-size: 7px;
+
+    letter-spacing: 2px;
+}
+
+
+.top-left {
+
+    left: 25px;
+}
+
+
+.top-right {
+
+    right: 25px;
+}
+
+
+.video-index {
+
+    position: absolute;
+
+    right: 25px;
+
+    bottom: 20px;
+
+    z-index: 5;
+
+    color: rgba(233,225,206,.65);
+
+    font-family: "Special Elite", cursive;
+
+    font-size: 30px;
+}
+
+
+/* =========================================
+   VIDEO INFO
+========================================= */
+
+.video-info {
+
+    display: grid;
+
+    grid-template-columns:
+        1.5fr
+        1.5fr
+        1fr
+        .6fr;
+
+    border-bottom: 1px solid var(--line);
+
+}
+
+
+.info-block {
+
+    padding: 18px 20px;
+
+    border-right: 1px solid var(--line);
+
+}
+
+
+.info-block:last-child {
+
+    border-right: none;
+
+}
+
+
+.info-label {
+
+    display: block;
+
+    color: var(--gray);
+
+    font-size: 7px;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 7px;
+}
+
+
+.info-block strong {
+
+    font-size: 10px;
+
+    letter-spacing: 1px;
+
+    font-weight: normal;
+}
+
+
+/* =========================================
+   DESCRIPTION
+========================================= */
+
+.description {
+
+    display: grid;
+
+    grid-template-columns: 80px 1fr;
+
+    gap: 30px;
+
+    max-width: 750px;
+
+    padding: 55px 0;
+
+}
+
+
+.description-number {
+
+    color: var(--red);
+
+    font-family: "Special Elite", cursive;
+
+    font-size: 22px;
+}
+
+
+.description h2 {
+
+    font-family: "Special Elite", cursive;
+
+    font-size: 24px;
+
+    letter-spacing: 1px;
+
+    margin-bottom: 18px;
+}
+
+
+.description p {
+
+    max-width: 650px;
+
+    color: #aaa395;
+
+    font-size: 12px;
+
+    line-height: 1.9;
+
+    margin-bottom: 10px;
+}
+
+
+/* =========================================
+   BOTTOM NAV
+========================================= */
+
+.bottom-nav {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    border-top: 1px solid var(--line);
+
+    padding-top: 18px;
+
+    color: var(--gray);
+
+    font-size: 8px;
+
+    letter-spacing: 1.5px;
+}
+
+
+.bottom-nav a {
+
+    color: var(--paper);
+
+    text-decoration: none;
+
+    transition: .25s ease;
+}
+
+
+.bottom-nav a:hover {
+
+    color: var(--red);
+
+    transform: translateX(-5px);
+
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 800px) {
+
+    .intro-page {
+
+        padding: 25px 20px 35px;
+
+    }
+
+
+    .top-info {
+
+        gap: 12px;
+
+        font-size: 7px;
+
+    }
+
+
+    .heading {
+
+        grid-template-columns: 1fr;
+
+        gap: 25px;
+
+    }
+
+
+    .heading p {
+
+        justify-self: start;
+
+    }
+
+
+    .heading h1 {
+
+        font-size: 58px;
+
+    }
+
+
+    .video-wrapper {
+
+        padding: 6px;
+
+    }
+
+
+    .video-info {
+
+        grid-template-columns: 1fr 1fr;
+
+    }
+
+
+    .info-block:nth-child(2) {
+
+        border-right: none;
+
+    }
+
+
+    .info-block:nth-child(-n+2) {
+
+        border-bottom: 1px solid var(--line);
+
+    }
+
+
+    .description {
+
+        grid-template-columns: 45px 1fr;
+
+        gap: 15px;
+
+    }
+
+
+    .bottom-nav {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 12px;
+
+    }
+
+}
+
+
+@media (max-width: 500px) {
+
+    .brand {
+
+        font-size: 13px;
+
+    }
+
+
+    .top-info span:first-child {
+
+        display: none;
+
+    }
+
+
+    .heading h1 {
+
+        font-size: 47px;
+
+    }
+
+
+    .heading p {
+
+        font-size: 11px;
+
+    }
+
+
+    .video-meta {
+
+        font-size: 6px;
+
+        top: 15px;
+
+    }
+
+
+    .video-index {
+
+        font-size: 20px;
+
+    }
+
+
+    .video-info {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .info-block {
+
+        border-right: none !important;
+
+        border-bottom: 1px solid var(--line);
+
+    }
+
+
+    .info-block:last-child {
+
+        border-bottom: none;
+
+    }
+
+
+    .description {
+
+        padding: 40px 0;
+
+    }
+
+}
+```
