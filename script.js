@@ -82,3 +82,68 @@ downloadPortfolio.addEventListener("click", function () {
         icon.textContent = "↓";
     }, 2000);
 });
+
+
+const timelineItems = document.querySelectorAll(".timeline__item");
+
+const revealObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  },
+  { threshold: 0.2 }
+);
+
+timelineItems.forEach((item) => revealObserver.observe(item));
+
+
+
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightboxImg");
+const lightboxClose = document.getElementById("lightboxClose");
+const photoButtons = document.querySelectorAll(".timeline__photo");
+
+function openLightbox(fullSrc, altText) {
+  lightboxImg.src = fullSrc;
+  lightboxImg.alt = altText || "";
+  lightbox.classList.add("is-open");
+  lightbox.setAttribute("aria-hidden", "false");
+  document.body.style.overflow = "hidden";
+}
+
+function closeLightbox() {
+  lightbox.classList.remove("is-open");
+  lightbox.setAttribute("aria-hidden", "true");
+  document.body.style.overflow = "";
+
+  lightboxImg.src = "";
+}
+
+photoButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const fullSrc = button.dataset.full;
+    const altText = button.querySelector("img")?.alt || "";
+    openLightbox(fullSrc, altText);
+  });
+});
+
+// tombol X
+lightboxClose.addEventListener("click", closeLightbox);
+
+
+lightbox.addEventListener("click", (event) => {
+  if (event.target === lightbox) {
+    closeLightbox();
+  }
+});
+
+// tombol ESC buat nutup
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && lightbox.classList.contains("is-open")) {
+    closeLightbox();
+  }
+});
