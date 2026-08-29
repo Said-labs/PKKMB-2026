@@ -1,9 +1,3 @@
-```javascript
-/* ==================================================
-   SA'ID AZIZ
-   INTRODUCE MYSELF
-   JAVASCRIPT
-================================================== */
 
 
 /* ==================================================
@@ -140,10 +134,7 @@ const footerYear =
 
 if (footerYear) {
 
-    /*
-     * Tidak mengubah isi footer secara otomatis.
-     * Bagian tahun tetap mengikuti tahun website.
-     */
+
 
 }
 
@@ -175,4 +166,3 @@ console.log(
 console.log(
     "Introduce Myself · 2026"
 );
-```
