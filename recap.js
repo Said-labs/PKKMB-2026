@@ -1,11 +1,8 @@
-
-
 const CONFIG = {
   title: "Recap Kegiatan",
   subtitle: "Daily documentation, from the PRA PKKMB until PKKMB is completed, in the form of videos or photos.",
- 
+
   stats: {
-    peserta: 0,        // jumlah peserta 
     sesi: null,         // null = dihitung otomatis dari jumlah tanggal unik
        // null = dihitung otomatis dari field "time" tiap item, format "HH:MM"
   }
@@ -76,7 +73,7 @@ const ITEMS = [
     audio: null
   },
 
-  
+
     {
     id: "m6",
     type: "image",
@@ -90,7 +87,7 @@ const ITEMS = [
     audio: null,
   },
 
-  
+
 ];
 
 /* =====================================================================
@@ -160,18 +157,11 @@ function renderStats() {
   document.getElementById("recapSubtitle").textContent = CONFIG.subtitle;
 
   const sesi = CONFIG.stats.sesi ?? PAGES.length;
-  const peserta = CONFIG.stats.peserta ?? "-";
-  const jam = CONFIG.stats.jamSelesai ?? (() => {
-    const times = ITEMS.map(i => i.time).filter(Boolean).sort();
-    return times.length ? times[times.length - 1] : "-";
-  })();
   const jumlahFoto = ITEMS.filter(i => i.type === "image").length;
   const jumlahVideo = ITEMS.filter(i => i.type === "video").length;
 
   const cards = [
-    { num: peserta, label: "Peserta" },
     { num: sesi, label: "Sesi" },
-    
     { num: jumlahFoto, label: "Foto" },
     { num: jumlahVideo, label: "Video" },
   ];
