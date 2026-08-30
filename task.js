@@ -1,19 +1,17 @@
-
-
 const CONFIG = {
-  title: "Task PKKMB",
-  subtitle: "Documentation of assignments from the pre-PKKMB phase through the completion of the PKKMB at Telkom University.",
+  title: "Recap Kegiatan",
+  subtitle: "Daily documentation, from the PRA PKKMB until PKKMB is completed, in the form of videos or photos.",
 
   stats: {
-    Assigned: 0, // angka bebas
-    Submitted: null,
-    // null = dihitung otomatis dari field "time" tiap item, format "HH:MM"
+    sesi: null,         // null = dihitung otomatis dari jumlah tanggal unik
+       // null = dihitung otomatis dari field "time" tiap item, format "HH:MM"
   }
 };
 
 
+
 const ITEMS = [
-  {
+ {
     id: "m1",
     type: "image",
     date: "2026-08-27",
@@ -24,7 +22,7 @@ const ITEMS = [
     tags: ["TWIBON", "PKKMB2026", "TELKOM UNIVERSITY", " INFORATIKA"],
      link: "https://www.instagram.com/p/DchAckUk9k4/?utm_source=ig_web_copy_link&igsi=MzRlODBiNWFlZA==",   
   linkLabel: "LINK TWIBON",
-   //location: { lat: -6.9147, lng: 107.6098, name: "Bandung, Jawa Barat" },
+   //ocation: { lat: -6.9147, lng: 107.6098, name: "Bandung, Jawa Barat" },
     audio: null,
   },
 
@@ -33,13 +31,13 @@ const ITEMS = [
   {
     id: "m2",
     type: "image",
-    date: "2026-08-27",
-    time: "10:00",
-    driveLink: "https://drive.google.com/file/d/1KW_F7OX_18OQ8n76XKH9OgHfj82WIj2e/view?usp=sharing",
-    title: "Name Tag PKKMB 2026",
-    description: " tugas berupaa name tag yang akan di pakaia sata pkkmb nanti yang berisi nama kelompok, past foto, nama lengkap, nim, dan fakultas dengan warnaa name tag kunign yang di gunakan oleh maba informatika nanti ",
-    tags: ["Name tag ", "pkkmb 2026"],
-//    location: { lat: -6.9034, lng: 107.6188, name: "Kampus Utama" },
+    date: "2026-08-30",
+    time: "10:45",
+    driveLink: "https://drive.google.com/file/d/1n6Kz4EAl0-XK97vGftuFkJHiop-rWuPG/view?usp=drive_link",
+    title: "Presentasi materi di kelas",
+    description: "Pemaparan materi utama menggunakan proyektor, diikuti sesi tanya jawab.",
+    tags: ["presentasi", "kelas"],
+    location: { lat: -6.9034, lng: 107.6188, name: "Kampus Utama" },
     audio: null,
   },
   {
@@ -51,8 +49,6 @@ const ITEMS = [
     title: "TWIBON VIDEO PKKMB 2026",
     description: "TWIBON BERBENTUK VIDEO",
     tags: ["TWIBON", "PKKMB2026", "TELKOM UNIVERSITY", " INFORATIKA"],
-     link: "https://www.instagram.com/p/DchAckUk9k4/?utm_source=ig_web_copy_link&igsi=MzRlODBiNWFlZA==",   
-  linkLabel: "LINK  Video TWIBON",
     location: null,
     audio: null,
   },
@@ -66,19 +62,16 @@ const ITEMS = [
     title: "PORTOFOLIO & RESUME",
     description: "Sesi santai sebelum evaluasi akhir minggu, sambil membahas rencana lanjutan.",
     tags: ["PORTOFOLIO", "RESUME", "PEMBELAJARAN"],
-  fileLink: "index.html",  
+  fileLink: "index.html",  // ⬅️ link ke file lokal (opsional, isi null kalau gaada)
   fileLabel: "BUKA PORTOFOLIO & RESUME",
   
     audio: null,
   },
 
-
-  
- 
 ];
 
 /* =====================================================================
-   3) GOOGLE DRIVE 
+   3) GOOGLE DRIVE → EMBED HELPERS
    ===================================================================== */
 
 function extractDriveId(link) {
@@ -136,24 +129,19 @@ let flatIndex = -1;
 const FLAT_ITEMS = PAGES.flatMap(p => p.items);
 
 /* =====================================================================
-   6) RENDER HEADER 
+   6) RENDER HEADER
    ===================================================================== */
 
 function renderStats() {
-  document.getElementById("TaskTitle").textContent = CONFIG.title;
-  document.getElementById("TaskSubtitle").textContent = CONFIG.subtitle;
+  document.getElementById("recapTitle").textContent = CONFIG.title;
+  document.getElementById("recapSubtitle").textContent = CONFIG.subtitle;
 
+  const sesi = CONFIG.stats.sesi ?? PAGES.length;
   const jumlahFoto = ITEMS.filter(i => i.type === "image").length;
   const jumlahVideo = ITEMS.filter(i => i.type === "video").length;
 
-  // Assigned: angka bebas dari CONFIG (default ke jumlah ITEMS kalau tidak diisi)
-  const assigned = CONFIG.stats.Assigned ?? ITEMS.length;
-  // Submitted: kalau null, dihitung otomatis dari item yang punya field "time"
-  const submitted = CONFIG.stats.Submitted ?? ITEMS.filter(i => Boolean(i.time)).length;
-
   const cards = [
-    { num: assigned, label: "ASSIGNED" },
-    { num: submitted, label: "SUBMITTED" },
+    { num: sesi, label: "Sesi" },
     { num: jumlahFoto, label: "Foto" },
     { num: jumlahVideo, label: "Video" },
   ];
@@ -299,33 +287,6 @@ function renderLightboxItem() {
     audioEl.removeAttribute("src");
   }
 
-  const linkBtn = document.getElementById("lbLinkBtn");
-const linkText = document.getElementById("lbLinkText");
-if (item.link) {
-  linkBtn.hidden = false;
-  linkBtn.href = item.link;
-  linkText.textContent = item.linkLabel || "Buka tautan";
-} else {
-  linkBtn.hidden = true;
-  linkBtn.removeAttribute("href");
-}
-
-document.getElementById("lbDesc").textContent = item.description || "";
-
-
-const fileBtn = document.getElementById("lbFileBtn");
-const fileText = document.getElementById("lbFileText");
-if (item.fileLink) {
-  fileBtn.hidden = false;
-  fileBtn.href = item.fileLink;
-  fileText.textContent = item.fileLabel || "Buka file";
-} else {
-  fileBtn.hidden = true;
-  fileBtn.removeAttribute("href");
-}
-
-
-document.getElementById("lbTags").innerHTML = (item.tags || []).map(t => `<span class="tag-pill">#${t}</span>`).join("");
   // peta
   const mapBlock = document.getElementById("lbMapBlock");
   const mapEl = document.getElementById("lbMap");
@@ -384,7 +345,7 @@ document.addEventListener("keydown", e => {
   if (e.key === "ArrowRight") stepLightbox(1);
 });
 
-
+// pan gambar saat di-zoom 
 (function enablePan() {
   let dragging = false, startX = 0, startY = 0, curX = 0, curY = 0;
   lbFrame.addEventListener("pointerdown", e => {
@@ -401,7 +362,9 @@ document.addEventListener("keydown", e => {
   zoomRange.addEventListener("input", () => { curX = 0; curY = 0; });
 })();
 
-
+/* =====================================================================
+   9) INIT
+   ===================================================================== */
 
 renderStats();
 renderPages();
