@@ -1,6 +1,6 @@
 const CONFIG = {
-  title: "Recap Kegiatan",
-  subtitle: "Daily documentation, from the PRA PKKMB until PKKMB is completed, in the form of videos or photos.",
+  title: "Task PKKMB",
+  subtitle: "Task documentation, from the PRA PKKMB until PKKMB is completed, in the form of videos or photos.",
 
   stats: {
     sesi: null,         // null = dihitung otomatis dari jumlah tanggal unik
