@@ -120,7 +120,7 @@ const ITEMS = [
     type: "video",
     date: "2026-08-30",
     time: "14:50",
-    driveLink: "https://drive.google.com/uc?id=1Hjnxh8aB8gp-VHDxD0LzOs1vknTshz0R",
+    driveLink: "https://drive.google.com/file/d/1VTIVCCxvlEBbUePwigH5_i3a4LRILzaF/view?usp=sharing",
     title: "Kelas 13 Informatika",
     description: "Rekaman singkat setelah pemapara tentang Hello world di danau galau ",
     tags: ["Kelas 13", "Pkkmb 2026", "informatika"],
