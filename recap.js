@@ -112,7 +112,7 @@ const ITEMS = [
     location: { lat: -6.97328, lng: 107.63034, name: "BENTO TELKOM UNIVERSITY" },
     audio: null
 
-
+  },
 ];
 
 /* =====================================================================
