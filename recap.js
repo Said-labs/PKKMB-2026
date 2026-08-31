@@ -87,6 +87,19 @@ const ITEMS = [
     audio: null,
   },
 
+     {
+    id: "m7",
+    type: "image",
+    date: "2026-08-30",
+    time: "14:50",
+    driveLink: "https://drive.google.com/file/d/1P2OnYMwc-7vEyKoVP4kwAmbLS6i7PGxD/view?usp=sharing",
+    title: "Kelas 13 INFORMATIKA",
+    description: " Pertemuan kelas 13 di danau galau untuk membahsa helo world prodi informatika ynag akan di laksanakan tnggal 10-11 september 2026 ",
+    tags: ["Kelas 13", "Pkkmb 2026", "informatika"],
+    location: { lat: -6.97321, lng: 107.63014 , name: "Danau Galau TEL- U" },
+    audio: null,
+  },
+
 
 ];
 
