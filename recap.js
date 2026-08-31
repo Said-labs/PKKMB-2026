@@ -83,7 +83,7 @@ const ITEMS = [
     title: "Kelompok Selaru 2008",
     description: "Pembuatan tugas kelompok berupa papan kelompok unutk pkkmb 2026 dengan nama kelompok selaru 2008 dengan jumlah angoota 55 orang. yang di pimpin oleh LO yang bernama  @aiscitraazali jurusan teknologi informasi  tahun masuk 2025 dan ada @khansasyahdaadia jurusan administrasi bisnis tahun 2024 ",
     tags: ["Selaru 2008", "Pkkmb 2026"],
-    location: { lat: -6.97328, lng: 107.63034, name: "Kampus Utama" },
+    location: { lat: -6.97328, lng: 107.63034, name: "JOGLO Tel-U" },
     audio: null,
   },
 
@@ -99,6 +99,18 @@ const ITEMS = [
     location: { lat: -6.97321, lng: 107.63014 , name: "Danau Galau TEL- U" },
     audio: null,
   },
+  {
+
+  id: "m8",
+    type: "video",
+    date: "2026-08-28",
+    time: "16:50",
+    driveLink: "https://drive.google.com/uc?id=1Hjnxh8aB8gp-VHDxD0LzOs1vknTshz0R",
+    title: "Kelompok selaru 2008",
+    description: "Rekaman singkat setelah pembuatan papaan kelompok untuk PKKMB 2026 ",
+    tags: ["Selaru 2008", "PKKMB 2026"],
+    location: { lat: -6.97328, lng: 107.63034, name: "BENTO TELKOM UNIVERSITY" },
+    audio: null
 
 
 ];
