@@ -99,6 +99,20 @@ const ITEMS = [
     location: { lat: -6.97321, lng: 107.63014 , name: "Danau Galau TEL- U" },
     audio: null,
   },
+    {
+
+  id: "m8",
+    type: "video",
+    date: "2026-08-28",
+    time: "16:50",
+    driveLink: "https://drive.google.com/uc?id=1Hjnxh8aB8gp-VHDxD0LzOs1vknTshz0R",
+    title: "Kelompok selaru 2008",
+    description: "Rekaman singkat setelah pembuatan papaan kelompok untuk PKKMB 2026 ",
+    tags: ["Selaru 2008", "PKKMB 2026"],
+    location: { lat: -6.97328, lng: 107.63034, name: "BENTO TELKOM UNIVERSITY" },
+    audio: null
+
+  },
 
 ];
 
