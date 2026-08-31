@@ -109,7 +109,22 @@ const ITEMS = [
     title: "Kelompok selaru 2008",
     description: "Rekaman singkat setelah pembuatan papaan kelompok untuk PKKMB 2026 ",
     tags: ["Selaru 2008", "PKKMB 2026"],
-    location: { lat: -6.97328, lng: 107.63034, name: "BENTO TELKOM UNIVERSITY" },
+    location: { lat: -6.97328, lng: 107.63034, name: "JOGLO Tel-U" },
+    audio: null
+
+  },
+
+    {
+
+  id: "m9",
+    type: "video",
+    date: "2026-08-30",
+    time: "14:50",
+    driveLink: "https://drive.google.com/uc?id=1Hjnxh8aB8gp-VHDxD0LzOs1vknTshz0R",
+    title: "Kelas 13 Informatika",
+    description: "Rekaman singkat setelah pemapara tentang Hello world di danau galau ",
+    tags: ["Kelas 13", "Pkkmb 2026", "informatika"],
+    location: { lat: -6.97321, lng: 107.63014 , name: "Danau Galau TEL- U" },
     audio: null
 
   },
