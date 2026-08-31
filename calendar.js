@@ -15,73 +15,20 @@
      time   : "HH:MM" (24 jam)
      desc   : deskripsi detail                                    */
   const EVENTS = {
-    "2026-08-03": [
-      { time: "09:00", title: "Rapat perencanaan tim", desc: "Susun target sprint bulan Agustus bersama divisi produk." }
+   
+    "2026-08-25": [
+      { time: "14:45 - 17:00", title: "ALmamater", desc: "Pengambilan Almamater Telkom university MABA 2026" }
     ],
-    "2026-08-05": [
-      { time: "13:30", title: "Panggilan klien — PT Nusantara", desc: "Presentasi progres proyek fase kedua dan Q&A." }
+    "2026-08-26": [
+      { time: "14:00 - 17:00", title: "Fisrt Meet Prodi", desc: "Pertemuan Mahasiswa prodi Informatika 2026 di Bento TELKOM UNIVERSITY" }
     ],
-    "2026-08-10": [
-      { time: "08:00", title: "Olahraga pagi", desc: "Lari santai 5K di taman kota." },
-      { time: "19:00", title: "Kelas bahasa Jepang", desc: "Materi: kata kerja bentuk lampau." }
+    "2026-08-28": [
+      { time: "15:00 - 17:30", title: "FIrst Meet KELOMPOK", desc: "Pertemuan anggota kelompok Selaru 2008 di joglo Telkom university untuk membuat papan kelompok" }
     ],
-    "2026-08-14": [
-      { time: "10:00", title: "Servis motor", desc: "Ganti oli dan cek rem di bengkel langganan." }
+    "2026-08-30": [
+      { time: "14:00 - 15:30", title: "First Meet Kelas 13", desc: "Pertemuan Kelas 13 di dana galau Telkom university Untuk membahasa Hello world  2026" },
+      
     ],
-    "2026-08-17": [
-      { time: "07:30", title: "Upacara Kemerdekaan RI", desc: "Upacara bendera bersama warga kompleks." },
-      { time: "16:00", title: "Nonton lomba 17-an", desc: "Lomba panjat pinang di lapangan RW." }
-    ],
-    "2026-08-21": [
-      { time: "14:00", title: "Review desain aplikasi", desc: "Tinjau ulang mockup halaman utama dengan tim desain." }
-    ],
-    "2026-08-24": [
-      { time: "09:30", title: "Medical check-up tahunan", desc: "Pemeriksaan rutin di klinik keluarga." }
-    ],
-    "2026-08-27": [
-      { time: "18:30", title: "Makan malam keluarga", desc: "Kumpul keluarga besar di rumah nenek." }
-    ],
-    "2026-08-29": [
-      { time: "11:00", title: "Belanja bulanan", desc: "Stok kebutuhan dapur untuk dua minggu ke depan." }
-    ],
-    "2026-08-31": [
-      { time: "09:00", title: "Standup mingguan", desc: "Sinkronisasi progres kerja seluruh anggota tim." },
-      { time: "15:00", title: "Deadline laporan bulanan", desc: "Kirim laporan keuangan Agustus ke atasan." },
-      { time: "20:00", title: "Nonton film bersama", desc: "Malam santai menonton film di rumah." }
-    ],
-    "2026-09-02": [
-      { time: "10:00", title: "Rapat evaluasi bulanan", desc: "Bahas capaian dan kendala bulan lalu." }
-    ],
-    "2026-09-09": [
-      { time: "09:00", title: "Workshop desain UI", desc: "Pelatihan internal seputar sistem desain terbaru." }
-    ],
-    "2026-09-15": [
-      { time: "12:00", title: "Makan siang alumni", desc: "Reuni kecil bersama teman kuliah." }
-    ],
-    "2026-09-24": [
-      { time: "08:00", title: "Donor darah", desc: "Kegiatan donor darah rutin di kantor." }
-    ],
-    "2026-10-05": [
-      { time: "09:00", title: "Kick-off proyek baru", desc: "Pembukaan proyek kuartal keempat." }
-    ],
-    "2026-10-20": [
-      { time: "19:00", title: "Webinar keuangan pribadi", desc: "Materi tentang perencanaan dana darurat." }
-    ],
-    "2026-11-11": [
-      { time: "10:00", title: "Audit internal", desc: "Pemeriksaan dokumen dan proses kerja tim." }
-    ],
-    "2026-11-25": [
-      { time: "18:00", title: "Perayaan ulang tahun kantor", desc: "Syukuran ulang tahun perusahaan ke-12." }
-    ],
-    "2026-12-24": [
-      { time: "20:00", title: "Malam Natal bersama keluarga", desc: "Ibadah malam dan makan malam bersama." }
-    ],
-    "2026-12-31": [
-      { time: "21:00", title: "Tahun baru bersama teman", desc: "Kumpul dan bakar jagung di rumah Rani." }
-    ],
-    "2027-01-01": [
-      { time: "00:00", title: "Tahun Baru", desc: "Libur nasional — awal tahun 2027." }
-    ]
   };
 
   /* ---------------- STATE ---------------- */
