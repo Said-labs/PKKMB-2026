@@ -29,6 +29,9 @@
     ],
     "2026-08-30": [
       { time: "14:00 - 15:30", title: "First Meet Kelas 13", desc: "Pertemuan Kelas 13 di Dana Galau Telkom University untuk membahas Hello World 2026" }
+    ],
+       "2026-09-02": [
+      { time: "05:30 - 16:00", title: "OSPEK PKKMB TEL-U 2026", desc: "Kegiatan PKKMB 2026 TELKOM UNIVERISTY BATCYH 2 DI LAPANAGAN TELKOM" }
     ]
   };
 
