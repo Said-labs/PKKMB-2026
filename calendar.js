@@ -1,23 +1,23 @@
+
+       "2026-09-02": [
+      { time: "05:30 - 16:00", title: "OSPEK PKKMB TEL-U 2026", desc: "Kegiatan PKKMB 2026 TELKOM UNIVERISTY BATCYH 2 DI LAPANAGAN TELKOM" }
+    ]
 (function () {
   "use strict";
 
-  const DOW_SHORT = ["Min","Sen","Sel","Rab","Kam","Jum","Sab"];
-  const DOW_MINI  = ["M","S","S","R","K","J","S"];
-  const DOW_LONG  = ["Minggu","Senin","Selasa","Rabu","Kamis","Jumat","Sabtu"];
+  /* ---------------- KONSTANTA BAHASA ---------------- */
+  const DOW_SHORT = ["Min", "Sen", "Sel", "Rab", "Kam", "Jum", "Sab"];
+  const DOW_MINI  = ["M", "S", "S", "R", "K", "J", "S"];
+  const DOW_LONG  = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
   const MONTH_LONG = ["Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember"];
   const MONTH_SHORT = ["Jan","Feb","Mar","Apr","Mei","Jun","Jul","Agu","Sep","Okt","Nov","Des"];
 
-  /*
-    AGENDA:
-    time boleh berupa:
-      "14:00"              = satu jam / waktu mulai
-      "14:00 - 17:00"      = rentang waktu
-      "09:30-12:15"        = rentang waktu
-
-    Untuk agenda 14:00 - 17:00, DAY VIEW akan menandai:
-    14:00, 15:00, 16:00, dan selesai pada 17:00.
-  */
+  /* ---------------- DATA AGENDA (edit di sini) ---------------- */
+  /* title  : judul singkat
+     time   : "HH:MM - HH:MM" (24 jam) — bisa juga cuma "HH:MM" (dianggap durasi 1 jam)
+     desc   : deskripsi detail                                    */
   const EVENTS = {
+
     "2026-08-25": [
       { time: "14:45 - 17:00", title: "Almamater", desc: "Pengambilan Almamater Telkom University MABA 2026" }
     ],
@@ -28,20 +28,21 @@
       { time: "15:00 - 17:30", title: "First Meet Kelompok", desc: "Pertemuan anggota kelompok Selaru 2008 di Joglo Telkom University untuk membuat papan kelompok" }
     ],
     "2026-08-30": [
-      { time: "14:00 - 15:30", title: "First Meet Kelas 13", desc: "Pertemuan Kelas 13 di Dana Galau Telkom University untuk membahas Hello World 2026" }
+      { time: "14:00 - 15:30", title: "First Meet Kelas 13", desc: "Pertemuan Kelas 13 di Dana Galau Telkom University untuk membahas Hello World 2026" },
     ],
-       "2026-09-02": [
+         "2026-09-02": [
       { time: "05:30 - 16:00", title: "OSPEK PKKMB TEL-U 2026", desc: "Kegiatan PKKMB 2026 TELKOM UNIVERISTY BATCYH 2 DI LAPANAGAN TELKOM" }
     ]
   };
+
 
   const state = {
     current: new Date(),
     selected: null,
     view: "month"
   };
-
   const today = stripTime(new Date());
+
 
   function pad2(n) { return String(n).padStart(2, "0"); }
 
@@ -63,15 +64,15 @@
     return EVENTS[dateKey(d)] || [];
   }
 
-  function addDays(d, n) {
-    const nd = new Date(d);
-    nd.setDate(nd.getDate() + n);
-    return nd;
-  }
-
   function startOfWeek(d) {
     const nd = stripTime(d);
     nd.setDate(nd.getDate() - nd.getDay());
+    return nd;
+  }
+
+  function addDays(d, n) {
+    const nd = new Date(d);
+    nd.setDate(nd.getDate() + n);
     return nd;
   }
 
@@ -79,87 +80,84 @@
     return new Date(year, month + 1, 0).getDate();
   }
 
-  /*
-    Parser waktu yang menerima:
-    14:00
-    14:00 - 17:00
-    14:00-17:00
-  */
-  function parseTimeRange(timeText) {
-    const matches = String(timeText).match(/\b([01]?\d|2[0-3]):([0-5]\d)\b/g) || [];
-
-    if (!matches.length) {
-      return { start: 0, end: 1, startText: "00:00", endText: "01:00" };
-    }
-
-    const toMinutes = (value) => {
-      const [h, m] = value.split(":").map(Number);
+  function parseTimeRange(str) {
+    const matches = String(str).match(/(\d{1,2}):(\d{2})/g) || [];
+    const toMinutes = (t) => {
+      const [h, m] = t.split(":").map(Number);
       return h * 60 + m;
     };
-
-    const startText = matches[0];
-    const start = toMinutes(startText);
-
     if (matches.length >= 2) {
-      const endText = matches[1];
-      let end = toMinutes(endText);
-
-      // Jika end lebih kecil, anggap agenda melewati tengah malam.
-      if (end <= start) end += 24 * 60;
-
-      return { start, end, startText, endText };
+      const start = toMinutes(matches[0]);
+      let end = toMinutes(matches[1]);
+      if (end <= start) end = start + 60; // jaga-jaga kalau data salah ketik
+      return { start, end };
     }
-
-    return {
-      start,
-      end: Math.min(start + 60, 24 * 60),
-      startText,
-      endText: `${pad2(Math.min(23, Math.floor((start + 60) / 60)))}:${pad2((start + 60) % 60)}`
-    };
+    if (matches.length === 1) {
+      const start = toMinutes(matches[0]);
+      return { start, end: start + 60 };
+    }
+    return { start: 0, end: 60 };
   }
 
-  function durationText(timeText) {
-    const { start, end } = parseTimeRange(timeText);
-    const mins = Math.max(0, end - start);
-    const hours = Math.floor(mins / 60);
-    const minutes = mins % 60;
+ 
+  function layoutDayEvents(evs) {
+    const items = evs.map(ev => {
+      const { start, end } = parseTimeRange(ev.time);
+      return { ev, start, end, col: 0, totalCols: 1 };
+    }).sort((a, b) => (a.start - b.start) || (a.end - b.end));
 
-    if (!hours) return `${minutes} menit`;
-    if (!minutes) return `${hours} jam`;
-    return `${hours} jam ${minutes} menit`;
+    const columns = []; 
+    items.forEach(it => {
+      let placed = -1;
+      for (let c = 0; c < columns.length; c++) {
+        const last = columns[c][columns[c].length - 1];
+        if (it.start >= last.end) { placed = c; break; }
+      }
+      if (placed === -1) { placed = columns.length; columns.push([]); }
+      columns[placed].push(it);
+      it.col = placed;
+    });
+
+    items.forEach(it => {
+      const overlapping = items.filter(o => o.start < it.end && o.end > it.start);
+      it.totalCols = Math.max(...overlapping.map(o => o.col)) + 1;
+    });
+
+    return items;
   }
 
-  function sortEvents(events) {
-    return events.slice().sort((a, b) => parseTimeRange(a.time).start - parseTimeRange(b.time).start);
-  }
-
+  /* ---------------- ELEMENTS ---------------- */
   const el = {
     periodTitle: document.getElementById("periodTitle"),
     btnPrev: document.getElementById("btnPrev"),
     btnNext: document.getElementById("btnNext"),
     btnToday: document.getElementById("btnToday"),
     viewSwitch: document.getElementById("viewSwitch"),
+
     viewYear: document.getElementById("viewYear"),
     viewMonth: document.getElementById("viewMonth"),
     viewWeek: document.getElementById("viewWeek"),
     viewDay: document.getElementById("viewDay"),
+
     yearGrid: document.getElementById("yearGrid"),
     monthWeekdayRow: document.getElementById("monthWeekdayRow"),
     monthGrid: document.getElementById("monthGrid"),
     weekGrid: document.getElementById("weekGrid"),
     dayTimeline: document.getElementById("dayTimeline"),
+
     agenda: document.getElementById("agenda"),
     agendaScrim: document.getElementById("agendaScrim"),
+    agendaSheet: document.getElementById("agendaSheet"),
     agendaClose: document.getElementById("agendaClose"),
     agendaWeekday: document.getElementById("agendaWeekday"),
     agendaDate: document.getElementById("agendaDate"),
     agendaList: document.getElementById("agendaList")
   };
 
+  /* ---------------- RENDER: TOPBAR ---------------- */
   function renderTopbar() {
     const d = state.current;
     let label = "";
-
     if (state.view === "year") {
       label = String(d.getFullYear());
     } else if (state.view === "month") {
@@ -167,19 +165,18 @@
     } else if (state.view === "week") {
       const start = startOfWeek(d);
       const end = addDays(start, 6);
-
       if (start.getMonth() === end.getMonth()) {
         label = `${start.getDate()}–${end.getDate()} ${MONTH_LONG[start.getMonth()]} ${start.getFullYear()}`;
       } else {
         label = `${start.getDate()} ${MONTH_SHORT[start.getMonth()]} – ${end.getDate()} ${MONTH_SHORT[end.getMonth()]} ${end.getFullYear()}`;
       }
-    } else {
+    } else if (state.view === "day") {
       label = `${DOW_LONG[d.getDay()]}, ${d.getDate()} ${MONTH_LONG[d.getMonth()]} ${d.getFullYear()}`;
     }
-
     el.periodTitle.textContent = label;
   }
 
+  /* ---------------- RENDER: YEAR VIEW ---------------- */
   function renderYear() {
     const year = state.current.getFullYear();
     el.yearGrid.innerHTML = "";
@@ -237,6 +234,7 @@
     }
   }
 
+  /* ---------------- RENDER: MONTH VIEW ---------------- */
   function renderMonth() {
     el.monthWeekdayRow.innerHTML = "";
     DOW_SHORT.forEach(l => {
@@ -249,37 +247,31 @@
     const month = state.current.getMonth();
     const firstDow = new Date(year, month, 1).getDay();
     const totalDays = daysInMonth(year, month);
-
-    const prevMonthDate = new Date(year, month, 0);
-    const prevTotal = prevMonthDate.getDate();
-    const prevYear = prevMonthDate.getFullYear();
-    const prevMonth = prevMonthDate.getMonth();
-
-    const nextDate = new Date(year, month + 1, 1);
-    const nextYear = nextDate.getFullYear();
-    const nextMonth = nextDate.getMonth();
+    const prevTotal = daysInMonth(year, month - 1 < 0 ? 11 : month - 1);
+    const prevYear = month - 1 < 0 ? year - 1 : year;
+    const prevMonth = month - 1 < 0 ? 11 : month - 1;
+    const nextYear = month + 1 > 11 ? year + 1 : year;
+    const nextMonth = month + 1 > 11 ? 0 : month + 1;
 
     el.monthGrid.innerHTML = "";
-    const cells = [];
 
+    const cells = [];
     for (let i = firstDow - 1; i >= 0; i--) {
       cells.push({ date: new Date(prevYear, prevMonth, prevTotal - i), muted: true });
     }
-
     for (let d = 1; d <= totalDays; d++) {
       cells.push({ date: new Date(year, month, d), muted: false });
     }
-
-    let nextDay = 1;
-    while (cells.length < 42) {
-      cells.push({ date: new Date(nextYear, nextMonth, nextDay++), muted: true });
+    while (cells.length % 7 !== 0 || cells.length < 42) {
+      const nextIdx = cells.length - (firstDow + totalDays) + 1;
+      cells.push({ date: new Date(nextYear, nextMonth, nextIdx), muted: true });
+      if (cells.length >= 42) break;
     }
 
     cells.forEach(cell => {
       const btn = document.createElement("button");
       btn.type = "button";
       btn.className = "daycell";
-
       if (cell.muted) btn.classList.add("is-muted");
       if (isSameDay(cell.date, today)) btn.classList.add("is-today");
       if (state.selected && isSameDay(cell.date, state.selected)) btn.classList.add("is-selected");
@@ -289,39 +281,32 @@
       num.textContent = String(cell.date.getDate());
       btn.appendChild(num);
 
-      const evs = sortEvents(eventsFor(cell.date));
-
+      const evs = eventsFor(cell.date);
       if (evs.length) {
         const wrap = document.createElement("span");
         wrap.className = "dayevents";
-
         evs.slice(0, 2).forEach(ev => {
           const chip = document.createElement("span");
           chip.className = "eventchip";
           chip.textContent = `${ev.time} ${ev.title}`;
           wrap.appendChild(chip);
         });
-
         if (evs.length > 2) {
           const more = document.createElement("span");
           more.className = "eventmore";
           more.textContent = `+${evs.length - 2} lainnya`;
           wrap.appendChild(more);
         }
-
         btn.appendChild(wrap);
       }
 
-      btn.setAttribute(
-        "aria-label",
-        `${cell.date.getDate()} ${MONTH_LONG[cell.date.getMonth()]} ${cell.date.getFullYear()}, ${evs.length} agenda`
-      );
-
+      btn.setAttribute("aria-label", `${cell.date.getDate()} ${MONTH_LONG[cell.date.getMonth()]} ${cell.date.getFullYear()}, ${evs.length} agenda`);
       btn.addEventListener("click", () => openAgenda(cell.date));
       el.monthGrid.appendChild(btn);
     });
   }
 
+  /* ---------------- RENDER: WEEK VIEW ---------------- */
   function renderWeek() {
     el.weekGrid.innerHTML = "";
     const start = startOfWeek(state.current);
@@ -331,29 +316,24 @@
       const col = document.createElement("button");
       col.type = "button";
       col.className = "weekcol";
-
       if (isSameDay(d, today)) col.classList.add("is-today");
       if (state.selected && isSameDay(d, state.selected)) col.classList.add("is-selected");
 
       const head = document.createElement("div");
       head.className = "weekcol__head";
-
       const dow = document.createElement("span");
       dow.className = "weekcol__dow";
       dow.textContent = DOW_SHORT[d.getDay()];
-
       const num = document.createElement("span");
       num.className = "weekcol__num";
       num.textContent = String(d.getDate());
-
       head.appendChild(dow);
       head.appendChild(num);
       col.appendChild(head);
 
-      const evs = sortEvents(eventsFor(d));
+      const evs = eventsFor(d);
       const evWrap = document.createElement("div");
       evWrap.className = "weekcol__events";
-
       if (!evs.length) {
         const empty = document.createElement("span");
         empty.className = "weekcol__empty";
@@ -367,119 +347,105 @@
           evWrap.appendChild(chip);
         });
       }
-
       col.appendChild(evWrap);
+
       col.addEventListener("click", () => openAgenda(d));
       el.weekGrid.appendChild(col);
     }
   }
 
-  /*
-    DAY VIEW utama:
-    Rentang 14:00 - 17:00 benar-benar muncul pada semua jam yang dilalui:
-      14:00 → mulai
-      15:00 → berlangsung
-      16:00 → berlangsung
-      17:00 → selesai
-    Jika mulai 14:45, event akan ditampilkan di slot 14:00 dan tetap diberi
-    informasi waktu 14:45 - 17:00.
-  */
+  /* ---------------- RENDER: DAY VIEW ---------------- */
+
   function renderDay() {
     const d = state.current;
     el.dayTimeline.innerHTML = "";
 
+    // header tanggal
     const header = document.createElement("div");
     header.className = "dayheader";
-
     const dow = document.createElement("p");
     dow.className = "dayheader__dow";
     dow.textContent = DOW_LONG[d.getDay()];
-
     const dateP = document.createElement("p");
     dateP.className = "dayheader__date";
     dateP.textContent = `${d.getDate()} ${MONTH_LONG[d.getMonth()]} ${d.getFullYear()}`;
-
     header.appendChild(dow);
     header.appendChild(dateP);
     el.dayTimeline.appendChild(header);
 
-    const evs = sortEvents(eventsFor(d));
+    // grid: kolom label jam + jalur waktu
+    const grid = document.createElement("div");
+    grid.className = "timegrid";
 
+    const labels = document.createElement("div");
+    labels.className = "timegrid__labels";
     for (let h = 0; h < 24; h++) {
-      const rowStart = h * 60;
-      const rowEnd = rowStart + 60;
-
-      const row = document.createElement("div");
-      row.className = "hourrow";
-
-      const label = document.createElement("div");
-      label.className = "hourrow__label";
-      label.textContent = `${pad2(h)}:00`;
-      row.appendChild(label);
-
-      const slot = document.createElement("div");
-      slot.className = "hourrow__slot";
-
-      const activeEvents = evs.filter(ev => {
-        const range = parseTimeRange(ev.time);
-        return range.start < rowEnd && range.end > rowStart;
-      });
-
-      const startingEvents = evs.filter(ev => {
-        const range = parseTimeRange(ev.time);
-        return Math.floor(range.start / 60) === h;
-      });
-
-      if (activeEvents.length) row.classList.add("has-event");
-      if (startingEvents.length) row.classList.add("is-event-start");
-
-      activeEvents.forEach(ev => {
-        const range = parseTimeRange(ev.time);
-
-        // Jangan menggandakan kartu event di setiap jam.
-        // Baris tiap jam tetap diberi highlight, sedangkan kartu detail hanya muncul
-        // pada jam tempat agenda dimulai.
-        if (Math.floor(range.start / 60) !== h) return;
-
-        const box = document.createElement("div");
-        box.className = "hourevent";
-
-        const t = document.createElement("div");
-        t.className = "hourevent__time";
-        t.textContent = ev.time;
-
-        const ti = document.createElement("div");
-        ti.className = "hourevent__title";
-        ti.textContent = ev.title;
-
-        const de = document.createElement("div");
-        de.className = "hourevent__desc";
-        de.textContent = ev.desc;
-
-        const du = document.createElement("div");
-        du.className = "hourevent__duration";
-        du.textContent = `Durasi ${durationText(ev.time)}`;
-
-        box.appendChild(t);
-        box.appendChild(ti);
-        box.appendChild(de);
-        box.appendChild(du);
-        slot.appendChild(box);
-      });
-
-      row.appendChild(slot);
-      el.dayTimeline.appendChild(row);
+      const lab = document.createElement("div");
+      lab.className = "hourlabel";
+      lab.textContent = `${pad2(h)}:00`;
+      labels.appendChild(lab);
     }
+    grid.appendChild(labels);
+
+    const track = document.createElement("div");
+    track.className = "timegrid__track";
+    track.style.height = "calc(var(--hour-h) * 24)";
+
+    const laidOut = layoutDayEvents(eventsFor(d));
+    laidOut.forEach(it => {
+      const box = document.createElement("div");
+      box.className = "timeevent";
+
+      const startHrs = it.start / 60;
+      const durHrs = Math.max((it.end - it.start) / 60, 1 / 6); 
+      box.style.top = `calc(var(--hour-h) * ${startHrs})`;
+      box.style.height = `calc(var(--hour-h) * ${durHrs} - 4px)`;
+
+      const widthPct = 100 / it.totalCols;
+      box.style.left = `calc(${widthPct}% * ${it.col} + 6px)`;
+      box.style.width = `calc(${widthPct}% - 12px)`;
+
+      if ((it.end - it.start) < 30) box.classList.add("timeevent--compact");
+
+      const t = document.createElement("p");
+      t.className = "timeevent__time";
+      t.textContent = it.ev.time;
+      const ti = document.createElement("p");
+      ti.className = "timeevent__title";
+      ti.textContent = it.ev.title;
+      const de = document.createElement("p");
+      de.className = "timeevent__desc";
+      de.textContent = it.ev.desc;
+      box.appendChild(t);
+      box.appendChild(ti);
+      box.appendChild(de);
+
+      box.addEventListener("click", () => openAgenda(d));
+      track.appendChild(box);
+    });
+
+   
+    const now = new Date();
+    if (isSameDay(d, now)) {
+      const nowLine = document.createElement("div");
+      nowLine.className = "timegrid__now";
+      const nowHrs = (now.getHours() * 60 + now.getMinutes()) / 60;
+      nowLine.style.top = `calc(var(--hour-h) * ${nowHrs})`;
+      track.appendChild(nowLine);
+    }
+
+    grid.appendChild(track);
+    el.dayTimeline.appendChild(grid);
   }
 
+  /* ---------------- AGENDA PANEL ---------------- */
   function openAgenda(date) {
     state.selected = date;
-
     el.agendaWeekday.textContent = DOW_LONG[date.getDay()];
     el.agendaDate.textContent = `${date.getDate()} ${MONTH_LONG[date.getMonth()]} ${date.getFullYear()}`;
-    el.agendaList.innerHTML = "";
 
-    const evs = sortEvents(eventsFor(date));
+    el.agendaList.innerHTML = "";
+    const evs = eventsFor(date).slice().sort((a, b) => a.time.localeCompare(b.time));
 
     if (!evs.length) {
       const empty = document.createElement("p");
@@ -490,27 +456,18 @@
       evs.forEach(ev => {
         const item = document.createElement("div");
         item.className = "agendaitem";
-
-        const t = document.createElement("div");
+        const t = document.createElement("p");
         t.className = "agendaitem__time";
         t.textContent = ev.time;
-
-        const ti = document.createElement("div");
+        const ti = document.createElement("p");
         ti.className = "agendaitem__title";
         ti.textContent = ev.title;
-
-        const de = document.createElement("div");
+        const de = document.createElement("p");
         de.className = "agendaitem__desc";
         de.textContent = ev.desc;
-
-        const du = document.createElement("span");
-        du.className = "agendaitem__duration";
-        du.textContent = `Durasi ${durationText(ev.time)}`;
-
         item.appendChild(t);
         item.appendChild(ti);
         item.appendChild(de);
-        item.appendChild(du);
         el.agendaList.appendChild(item);
       });
     }
@@ -525,6 +482,7 @@
     el.agenda.classList.remove("is-open");
   }
 
+  /* ---------------- VIEW DISPATCH ---------------- */
   function render() {
     [el.viewYear, el.viewMonth, el.viewWeek, el.viewDay].forEach(v => v.hidden = true);
     renderTopbar();
@@ -538,7 +496,7 @@
     } else if (state.view === "week") {
       el.viewWeek.hidden = false;
       renderWeek();
-    } else {
+    } else if (state.view === "day") {
       el.viewDay.hidden = false;
       renderDay();
     }
@@ -551,31 +509,27 @@
     });
   }
 
+  /* ---------------- NAVIGASI PREV / NEXT / TODAY ---------------- */
   function step(dir) {
     const d = new Date(state.current);
-
     if (state.view === "year") d.setFullYear(d.getFullYear() + dir);
     else if (state.view === "month") d.setMonth(d.getMonth() + dir);
     else if (state.view === "week") d.setDate(d.getDate() + dir * 7);
-    else d.setDate(d.getDate() + dir);
-
+    else if (state.view === "day") d.setDate(d.getDate() + dir);
     state.current = d;
     render();
   }
 
   el.btnPrev.addEventListener("click", () => step(-1));
   el.btnNext.addEventListener("click", () => step(1));
-
   el.btnToday.addEventListener("click", () => {
     state.current = new Date();
-    state.selected = null;
     render();
   });
 
-  el.viewSwitch.addEventListener("click", e => {
+  el.viewSwitch.addEventListener("click", (e) => {
     const btn = e.target.closest(".viewbtn");
     if (!btn) return;
-
     state.view = btn.dataset.view;
     syncViewButtons();
     render();
@@ -583,11 +537,12 @@
 
   el.agendaClose.addEventListener("click", closeAgenda);
   el.agendaScrim.addEventListener("click", closeAgenda);
-
-  document.addEventListener("keydown", e => {
+  document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") closeAgenda();
   });
 
+  /* ---------------- INIT ---------------- */
   syncViewButtons();
   render();
+
 })();
