@@ -71,6 +71,21 @@ const ITEMS = [
     audio: null,
   },
 
+    {
+    id: "m5",
+    type: "image",
+    date: "2026-08-27",
+    time: "04.00",
+    driveLink: "https://drive.google.com/file/d/1bGTNSFN4FziJz-u0LG4Uar90ZQt2Zu9z/view?usp=sharing",
+    title: "Head band PKKMB 2026",
+    description: "Sebuah Head BAND pkkmb 2026 yang di guanakan saat pkkmb berlangsung ",
+    tags: ["Head band", "PKKMB2026", "TELKOM UNIVERSITY", " INFORATIKA"],
+ //    link: "https://www.instagram.com/p/DchAckUk9k4/?utm_source=ig_web_copy_link&igsi=MzRlODBiNWFlZA==",   
+//  linkLabel: "LINK TWIBON",
+   //ocation: { lat: -6.9147, lng: 107.6098, name: "Bandung, Jawa Barat" },
+    audio: null,
+  },
+
 ];
 
 /* =====================================================================
