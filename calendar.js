@@ -12,9 +12,9 @@
   const MONTH_LONG = ["Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember"];
   const MONTH_SHORT = ["Jan","Feb","Mar","Apr","Mei","Jun","Jul","Agu","Sep","Okt","Nov","Des"];
 
-  /* ---------------- DATA AGENDA (edit di sini) ---------------- */
+  /* ---------------- DATA AGENDA ---------------- */
   /* title  : judul singkat
-     time   : "HH:MM - HH:MM" (24 jam) — bisa juga cuma "HH:MM" (dianggap durasi 1 jam)
+     time   : "HH:MM - HH:MM" (24 jam) — bisa juga cuma "HH:MM" 
      desc   : deskripsi detail                                    */
   const EVENTS = {
 
