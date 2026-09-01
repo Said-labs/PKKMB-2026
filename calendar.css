@@ -1,5 +1,5 @@
 :root{
-  /* ====== Palet mentah (sesuai yang diminta) ====== */
+
   --surface-dark:   #1a2130;
   --surface-dark-2: #212a3d;
   --line-dark:      #313d54;
@@ -25,7 +25,7 @@
   --ink-maroon:      #2a1210;
   --ink-soft-maroon: #5a3a34;
 
-  /* ====== Token semantik dipakai di seluruh UI (dipetakan dari palet di atas) ====== */
+  
   --paper:        var(--cream-50);
   --paper-alt:    var(--cream-100);
   --surface:      #fffaf1;
@@ -58,7 +58,6 @@
 
   --ease: cubic-bezier(.22,.9,.32,1);
 
-  /* tinggi 1 jam pada tampilan Hari — ubah nilai ini untuk memperbesar/perkecil grid jam */
   --hour-h: 64px;
 
   font-size: 16px;
@@ -423,7 +422,7 @@ button{ font-family: inherit; }
 }
 
 /* ---------------------------------------------------------
-   DAY VIEW — grid jam yang bisa menampung event lintas jam
+   DAY VIEW 
 --------------------------------------------------------- */
 .daytimeline{
   background: var(--surface);
@@ -450,7 +449,6 @@ button{ font-family: inherit; }
   font-weight: 600;
 }
 
-/* grid: kolom label jam (kiri) + jalur waktu (kanan) tempat balok event digambar */
 .timegrid{
   display:grid;
   grid-template-columns: 64px 1fr;
