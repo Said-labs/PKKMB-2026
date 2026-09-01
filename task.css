@@ -619,3 +619,42 @@ body{
   .lb-stage{ min-height: unset; padding: 8px 44px; }
   .lb-side{ flex-basis: 220px; }
 }
+
+@media (max-width:420px){
+
+  .lb-stage{
+    padding:7px 34px;
+    gap:8px;
+  }
+
+  .lb-frame.video-mode .video-shell{
+    width:min(245px, 65vw);
+    height:min(435px, 55dvh);
+
+    border-radius:9px;
+  }
+
+  .lb-controls{
+    gap:7px;
+    padding:7px 9px;
+  }
+
+  .lb-slider{
+    font-size:10px;
+  }
+
+  .lb-reset{
+    font-size:10px;
+    padding:5px 9px;
+  }
+}
+
+
+/* HP SANGAT PENDEK / LANDSCAPE */
+@media (max-height:560px) and (orientation:landscape){
+
+  .lb-frame.video-mode .video-shell{
+    width:min(210px, 30vw);
+    height:min(370px, 72dvh);
+  }
+}
