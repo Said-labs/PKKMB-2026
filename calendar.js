@@ -1,7 +1,4 @@
 
-       "2026-09-02": [
-      { time: "05:30 - 16:00", title: "OSPEK PKKMB TEL-U 2026", desc: "Kegiatan PKKMB 2026 TELKOM UNIVERISTY BATCYH 2 DI LAPANAGAN TELKOM" }
-    ]
 (function () {
   "use strict";
 
