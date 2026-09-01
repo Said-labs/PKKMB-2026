@@ -28,18 +28,7 @@ const ITEMS = [
 
    
 
-  {
-    id: "m2",
-    type: "image",
-    date: "2026-08-30",
-    time: "10:45",
-    driveLink: "https://drive.google.com/file/d/1n6Kz4EAl0-XK97vGftuFkJHiop-rWuPG/view?usp=drive_link",
-    title: "Presentasi materi di kelas",
-    description: "Pemaparan materi utama menggunakan proyektor, diikuti sesi tanya jawab.",
-    tags: ["presentasi", "kelas"],
-    location: { lat: -6.9034, lng: 107.6188, name: "Kampus Utama" },
-    audio: null,
-  },
+ 
   {
     id: "m3",
     type: "video",
