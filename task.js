@@ -265,6 +265,66 @@ function renderLightboxItem() {
   document.getElementById("lbDesc").textContent = item.description || "";
   document.getElementById("lbTags").innerHTML = (item.tags || []).map(t => `<span class="tag-pill">#${t}</span>`).join("");
 
+  const linksBlock = document.getElementById("lbLinksBlock");
+  const linksEl = document.getElementById("lbLinks");
+
+  const links = [];
+
+  /* LINK TWIBON */
+  if (item.link) {
+    links.push(`
+      <a
+        class="lb-link-btn link-twibon"
+        href="${item.link}"
+        target="_blank"
+        rel="noopener noreferrer"
+        title="${item.linkLabel || "Buka tautan"}">
+
+        <span class="link-left">
+          <span class="link-icon">🔗</span>
+          <span class="link-text">
+            ${item.linkLabel || "BUKA LINK"}
+          </span>
+        </span>
+
+        <span class="link-arrow">↗</span>
+      </a>
+    `);
+  }
+
+
+  /* LINK PORTFOLIO / FILE */
+  if (item.fileLink) {
+    links.push(`
+      <a
+        class="lb-link-btn link-portfolio"
+        href="${item.fileLink}"
+        target="_blank"
+        rel="noopener noreferrer"
+        title="${item.fileLabel || "Buka file"}">
+
+        <span class="link-left">
+          <span class="link-icon">📁</span>
+          <span class="link-text">
+            ${item.fileLabel || "BUKA FILE"}
+          </span>
+        </span>
+
+        <span class="link-arrow">↗</span>
+      </a>
+    `);
+  }
+
+
+  if (links.length > 0) {
+    linksEl.innerHTML = links.join("");
+    linksBlock.hidden = false;
+  } else {
+    linksEl.innerHTML = "";
+    linksBlock.hidden = true;
+  }
+
+
   // audio
   const audioBlock = document.getElementById("lbAudioBlock");
   const audioEl = document.getElementById("lbAudio");
