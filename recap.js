@@ -185,6 +185,56 @@ const ITEMS = [
     audio: null,
   },
 
+      {
+    id: "m14",
+    type: "image",
+    date: "2026-09-04",
+    time: "14:50",
+    driveLink: "https://drive.google.com/file/d/1ZPbGIOLnScZZlypOr1JVz4qzVTL7zwua/view?usp=sharing",
+    title: "PRA UKM FAIR 2026",
+    description: " Anggota kelompok selaru 2026 dengan nama @NABILA NUR SYAFAQOH DARI FAKULTAS industri kreatif PRODI desain interior punya alergi udang dan ikan ",
+    tags: ["selaru 2008", "pra ukm fair 2026", ],
+  //  location: { lat: -6.97321, lng: 107.63014 , name: "Danau Galau TEL- U" },
+    audio: null,
+  },
+
+      {
+    id: "m13",
+    type: "image",
+    date: "2026-09-04",
+    time: "14:50",
+    driveLink: "https://drive.google.com/file/d/1LGLt8UcCK8-Y5nATyeTUSm7T0pjCunnu/view?usp=sharing",
+    title: "PRA UKM FAIR 2026",
+    description: " Anggota kelompok selaru 2026 dengan nama @INTAN AFRIANI DARI FAKULTAS REKAYA INDUSTRI PRODI SISTEM INFORMASI Asal dari Aceh HOBINYA Traveling lalu funfactnya suka nonton film tapi bosenan ",
+    tags: ["selaru 2008", "pra ukm fair 2026", ],
+  //  location: { lat: -6.97321, lng: 107.63014 , name: "Danau Galau TEL- U" },
+    audio: null,
+  },
+
+       {
+    id: "m15",
+    type: "image",
+    date: "2026-09-04",
+    time: "14:50",
+    driveLink: "https://drive.google.com/file/d/1-uyJxpT15Hcrf9C-S4f-GSLClRPoW0fU/view?usp=sharing",
+    title: "PRA UKM FAIR 2026",
+    description: " LO DARI KELOMPOK SELARU 2008 dengan nama @ khansa syahda adia dari fakultas ekonomi dan bisnis prodi administrasi bisni tahun angkatan 2024 ",
+    tags: ["selaru 2008", "pra ukm fair 2026", ],
+  //  location: { lat: -6.97321, lng: 107.63014 , name: "Danau Galau TEL- U" },
+    audio: null,
+  },
+      {
+    id: "m16",
+    type: "image",
+    date: "2026-09-04",
+    time: "14:50",
+    driveLink: "https://drive.google.com/file/d/18Ie0IS5K_EXJezE0L_ENZ8eNQ80VN60E/view?usp=sharing",
+    title: "PRA UKM FAIR 2026",
+    description: " LO DARI KELOMPOK SELARU 2008 dengan nama @ AIS CITRA AZALI dari fakultas informatika prodi teknologi informasi tahun angkatan 2025 ",
+    tags: ["selaru 2008", "pra ukm fair 2026", ],
+  //  location: { lat: -6.97321, lng: 107.63014 , name: "Danau Galau TEL- U" },
+    audio: null,
+  },
 ];
 
 /* =====================================================================
