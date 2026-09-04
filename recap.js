@@ -129,6 +129,49 @@ const ITEMS = [
 
   },
 
+      {
+
+  id: "m10",
+    type: "video",
+    date: "2026-09-02",
+    time: "16:40",
+    driveLink: "https://drive.google.com/file/d/1O0q-LArxNuj6STR3eNU7Pm6m0U1dQ76m/view?usp=sharing",
+    title: "Kelompok Selaru 2008",
+    description: "Rekaman singkat trend tiktok setelah pkkmb dari pgai smapai sore ",
+    tags: ["SELARU 2008", "Pkkmb 2026", "Solid loh yaa"],
+  //  location: { lat: -6.97321, lng: 107.63014 , name: "Danau Galau TEL- U" },
+    audio: null
+
+  },
+
+       {
+
+  id: "m11",
+    type: "video",
+    date: "2026-09-02",
+    time: "14:40",
+    driveLink: "https://drive.google.com/file/d/1fgzqIsMZt2VZxE6DFsxQV73-df_aGxU3/view?usp=sharing",
+    title: "pkkmb 2026",
+    description: "Rekaman singkat suasana pkkmb pada batch 2 ",
+    tags: [ "Pkkmb 2026", "seruu"],
+  //  location: { lat: -6.97321, lng: 107.63014 , name: "Danau Galau TEL- U" },
+    audio: null
+
+  },
+
+   {
+    id: "m12",
+    type: "image",
+    date: "2026-09-02",
+    time: "14:50",
+    driveLink: "https://drive.google.com/file/d/1zIvDC2J0cocFiShxOeoLpTmu5u_p0K4y/view?usp=sharing",
+    title: "Selaru 2008",
+    description: " foto bareng kelompok 2008 setelah pkkmb tdi di gsb dan foto ini di rektorat ",
+    tags: ["selaru 2008", "Pkkmb 2026", ],
+  //  location: { lat: -6.97321, lng: 107.63014 , name: "Danau Galau TEL- U" },
+    audio: null,
+  },
+
 ];
 
 /* =====================================================================
