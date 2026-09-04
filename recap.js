@@ -172,6 +172,19 @@ const ITEMS = [
     audio: null,
   },
 
+    {
+    id: "m13",
+    type: "image",
+    date: "2026-09-04",
+    time: "14:50",
+    driveLink: "https://drive.google.com/file/d/1VvCy6NGk65kjda5GnS8nuKRIUkVAnqzS/view?usp=sharing",
+    title: "PRA UKM FAIR 2026",
+    description: " Anggota kelompok selaru 2026 dengan nama @SITI ALIMATUL AZIZAH DARI FAKULTAS INFORMATIKA PRODI DATA SAINS Asal dari CILEGON BANTEN HOBINYA dengerin music lalu funfactnya dia suka sayur tapi ga suka daging ",
+    tags: ["selaru 2008", "pra ukm fair 2026", ],
+  //  location: { lat: -6.97321, lng: 107.63014 , name: "Danau Galau TEL- U" },
+    audio: null,
+  },
+
 ];
 
 /* =====================================================================
