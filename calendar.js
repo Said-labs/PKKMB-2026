@@ -31,16 +31,16 @@
       { time: "05:30 - 16:00", title: "OSPEK PKKMB TEL-U 2026", desc: "Kegiatan PKKMB 2026 TELKOM UNIVERISTY BATCYH 2 DI LAPANAGAN TELKOM" }
     ],
        "2026-09-05": [
-      { time: "06.30- 16:30", title: "UKM FAIR TEL-U 2026", desc: "Acara UKM FAIR 2026 yang dimana kitaa itu mengujungi stand yang di sedakan panitia TEL-U" },
+      { time: "06.30 - 16:30", title: "UKM FAIR TEL-U 2026", desc: "Acara UKM FAIR 2026 yang dimana kitaa itu mengujungi stand yang di sedakan panitia TEL-U" },
     ],
            "2026-09-10": [
-      { time: "06.30- 16:30", title: "OSPEK jurusan INFORMATIKA", desc: "Kegiatan ospek jurusan untuk mengenal lebih dlaam informatika itu sperti apa nantinya , ada apa aja" },
+      { time: "06.30 - 16:30", title: "OSPEK jurusan INFORMATIKA", desc: "Kegiatan ospek jurusan untuk mengenal lebih dlaam informatika itu sperti apa nantinya , ada apa aja" },
     ],
            "2026-09-11": [
-      { time: "06.30- 16:30", title: "OSPEK jurusan INFORMATIKA", desc: "Kegiatan ospek jurusan untuk mengenal lebih dlaam informatika itu sperti apa nantinya , ada apa aja" },
+      { time: "06.30 - 16:30", title: "OSPEK jurusan INFORMATIKA", desc: "Kegiatan ospek jurusan untuk mengenal lebih dlaam informatika itu sperti apa nantinya , ada apa aja" },
     ],
       "2026-09-12": [
-      { time: "07.00- 16:00", title: "Sidang senat PKKMB 2026", desc: "Acara sidang senat pkkmb 2026 yang dimana kitaa itu di sahkan  sebagai mahaissswa TEL-U 2026" },
+      { time: "07.00 - 16:00", title: "Sidang senat PKKMB 2026", desc: "Acara sidang senat pkkmb 2026 yang dimana kitaa itu di sahkan  sebagai mahaissswa TEL-U 2026" },
     ],
   };
 
